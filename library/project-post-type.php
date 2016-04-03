@@ -60,9 +60,9 @@ function projectType() {
 	); /* end of register post type */
 	
 	/* this adds your post categories to your custom post type */
-	register_taxonomy_for_object_type( 'category', 'project' );
+	register_taxonomy_for_object_type( 'project_cat', 'project' );
 	/* this adds your post tags to your custom post type */
-	register_taxonomy_for_object_type( 'post_tag', 'project' );
+	register_taxonomy_for_object_type( 'project_tag', 'project' );
 	
 }
 
