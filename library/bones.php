@@ -133,9 +133,13 @@ function astralweb_scripts_and_styles() {
 		// ie-only style sheet
 		wp_register_style( 'astralweb-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
 
-		wp_register_style( 'angularjs', get_stylesheet_directory_uri().'/bower_components/angular/angular.min.js', array(), '');
+		wp_register_script( 'angularjs', get_stylesheet_directory_uri().'/bower_components/angular/angular.min.js', array(), '');
 
-		wp_register_style( 'angularjs-route', get_stylesheet_directory_uri() . '/bower_components/angular-route/angular-route.min.js', array(), '');
+		wp_register_script( 'angularjs-route', get_stylesheet_directory_uri() . '/bower_components/angular-ui-router/release/angular-ui-router.min.js', array(), '');
+
+		wp_register_script( 'astral-project-list', get_stylesheet_directory_uri() . '/app/projectList.js', array(), '');
+
+		wp_register_script( 'astral-project-display', get_stylesheet_directory_uri() . '/app/projectDisplay.js', array(), '');
 
     // comment reply script for threaded comments
     if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
@@ -149,6 +153,8 @@ function astralweb_scripts_and_styles() {
 		wp_enqueue_script( 'astralweb-modernizr' );
 		wp_enqueue_script( 'angularjs');
 		wp_enqueue_script( 'angularjs-route');
+		wp_enqueue_script( 'astral-project-list');
+		wp_enqueue_script( 'astral-project-display');
 		wp_enqueue_style( 'astralweb-stylesheet' );
 		wp_enqueue_style( 'astralweb-ie-only' );
 
