@@ -42,17 +42,17 @@ function($stateProvider, $urlRouterProvider) {
 				}]
 			}
 		});
-	$stateProvider
-		.state('projects', {
-			url: '/projects/{id}',
-			templateUrl: '/projects.html',
-			controller: 'PostsCtrl',
-			resolve: {
-				post: ['$stateParams', 'projects', function($stateParams, projects) {
-					return projects.get($stateParams.id);
-				}]
-			}
-		});
+	// $stateProvider
+	// 	.state('projects', {
+	// 		url: '/projects/{id}',
+	// 		templateUrl: '/projects.html',
+	// 		controller: 'PostsCtrl',
+	// 		resolve: {
+	// 			post: ['$stateParams', 'projects', function($stateParams, projects) {
+	// 				return projects.get($stateParams.id);
+	// 			}]
+	// 		}
+	// 	});
 
 	$urlRouterProvider.otherwise('home');
 	}]);
