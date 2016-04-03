@@ -34,4 +34,6 @@ Yeoman generator to quickly install Bones Wordpress starter theme into your Word
 by 0dp
 https://github.com/0dp/generator-wp-bones
 
-
+TODO:
+remove files that are not needed (custom templates)
+move bower and angular app into library

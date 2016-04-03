@@ -28,7 +28,7 @@ function astralweb_ahoy() {
   load_theme_textdomain( 'astralweb', get_template_directory() . '/library/translation' );
 
   // USE THIS TEMPLATE TO CREATE CUSTOM POST TYPES EASILY
-  //  require_once( 'library/custom-post-type.php' );
+    require_once( 'library/project-post-type.php' );
 
   // launching operation cleanup
   add_action( 'init', 'astralweb_head_cleanup' );
