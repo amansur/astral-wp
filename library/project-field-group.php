@@ -81,7 +81,7 @@ acf_add_local_field_group(array (
 				'class' => '',
 				'id' => '',
 			),
-			'button_label' => 'Add Row',
+			'button_label' => 'Add Media',
 			'min' => '',
 			'max' => '',
 			'layouts' => array (
