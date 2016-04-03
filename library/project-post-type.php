@@ -61,7 +61,7 @@ function projectType() {
 	); /* end of register post type */
 	
 	/* this adds your post categories to your custom post type */
-	register_taxonomy_for_object_type( 'project_cat', 'project' );
+	//register_taxonomy_for_object_type( 'project_cat', 'project' );
 	/* this adds your post tags to your custom post type */
 	register_taxonomy_for_object_type( 'project_tag', 'project' );
 	
@@ -76,27 +76,27 @@ function projectType() {
 	*/
 	
 	// now let's add custom categories (these act like categories)
-	register_taxonomy( 'project_cat', 
-		array('project'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
-		array('hierarchical' => true,     /* if this is true, it acts like categories */
-			'labels' => array(
-				'name' => __( 'Project Categories', 'astralweb' ), /* name of the custom taxonomy */
-				'singular_name' => __( 'Project Category', 'astralweb' ), /* single taxonomy name */
-				'search_items' =>  __( 'Search Projects', 'astralweb' ), /* search title for taxomony */
-				'all_items' => __( 'All Projects', 'astralweb' ), /* all title for taxonomies */
-				'parent_item' => __( 'Parent Project', 'astralweb' ), /* parent title for taxonomy */
-				'parent_item_colon' => __( 'Parent Project:', 'astralweb' ), /* parent taxonomy title */
-				'edit_item' => __( 'Edit Project', 'astralweb' ), /* edit custom taxonomy title */
-				'update_item' => __( 'Update Project', 'astralweb' ), /* update title for taxonomy */
-				'add_new_item' => __( 'Add New Project', 'astralweb' ), /* add new title for taxonomy */
-				'new_item_name' => __( 'New Project Name', 'astralweb' ) /* name title for taxonomy */
-			),
-			'show_admin_column' => true, 
-			'show_ui' => true,
-			'query_var' => true,
-			'rewrite' => array( 'slug' => 'project-slug' ),
-		)
-	);
+	// register_taxonomy( 'project_cat', 
+	// 	array('project'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
+	// 	array('hierarchical' => true,     /* if this is true, it acts like categories */
+	// 		'labels' => array(
+	// 			'name' => __( 'Project Categories', 'astralweb' ), /* name of the custom taxonomy */
+	// 			'singular_name' => __( 'Project Category', 'astralweb' ), /* single taxonomy name */
+	// 			'search_items' =>  __( 'Search Projects', 'astralweb' ), /* search title for taxomony */
+	// 			'all_items' => __( 'All Projects', 'astralweb' ), /* all title for taxonomies */
+	// 			'parent_item' => __( 'Parent Project', 'astralweb' ), /* parent title for taxonomy */
+	// 			'parent_item_colon' => __( 'Parent Project:', 'astralweb' ), /* parent taxonomy title */
+	// 			'edit_item' => __( 'Edit Project', 'astralweb' ), /* edit custom taxonomy title */
+	// 			'update_item' => __( 'Update Project', 'astralweb' ), /* update title for taxonomy */
+	// 			'add_new_item' => __( 'Add New Project', 'astralweb' ), /* add new title for taxonomy */
+	// 			'new_item_name' => __( 'New Project Name', 'astralweb' ) /* name title for taxonomy */
+	// 		),
+	// 		'show_admin_column' => true, 
+	// 		'show_ui' => true,
+	// 		'query_var' => true,
+	// 		'rewrite' => array( 'slug' => 'project-slug' ),
+	// 	)
+	// );
 	
 	// now let's add custom tags (these act like categories)
 	register_taxonomy( 'project_tag', 
