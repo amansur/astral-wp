@@ -9,6 +9,7 @@
 								<div ng-repeat="project in projects">
 									{{project}}
 								</div>
+{{5+5}}
 							</script>
 							
 						</main>
