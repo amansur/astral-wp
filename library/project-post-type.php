@@ -54,6 +54,7 @@ function projectType() {
 			'has_archive' => 'project', /* you can rename the slug here */
 			'capability_type' => 'post',
 			'hierarchical' => false,
+			'show_in_rest' => true, /* enable in REST API */
 			/* the next one is important, it tells what's enabled in the post editor */
 			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky')
 		) /* end of options */
