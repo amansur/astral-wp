@@ -1,20 +1,22 @@
-<?php get_header(); ?>
+<html>
+<head>
+	<link rel="stylesheet" href="/wp-content/themes/astral-wp/bower_components/bootstrap/dist/css/bootstrap.min.css">
 
-			<div id="content">
+	<!-- <script type="text/javascript" src="/wp-content/themes/astral-wp/bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="/wp-content/themes/astral-wp/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script> -->
+	</head>
+<body>
 
-				<div id="inner-content" class="wrap cf">
+<ul data-bind="foreach: projects">
+<li>
+	<span data-bind="text: name"></span>
+	<span data-bind="foreach: tags">
+		<span data-bind="text: name"></span>
+	</span>
+</li>
+</ul>
+<script type="text/javascript" src="/wp-content/themes/astral-wp/bower_components/knockout/dist/knockout.js"></script>
+<script type="text/javascript" src="/wp-content/themes/astral-wp/app/project.js"></script>
 
-						<main id="main" class="m-all t-2of3 d-5of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog" ng-app="listProject">
-								<div ng-repeat="project in projects">
-									{{project.title}}
-								</div>
-								{{5+7}}
-							
-						</main>
-
-				</div>
-
-			</div>
-
-
-<?php get_footer(); ?>
+</body>
+</html>
