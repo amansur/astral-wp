@@ -8,7 +8,7 @@ function ProjectListViewModel() {
 	// new Project("Project 3", tags)]
 
 	self.getProjects = function() {
-		$.get('/wp-json/wp/v2/project', null, self.projects);
+		jQuery.get('/wp-json/wp/v2/project', null, self.projects);
 	}
 
 	self.getProjects();
