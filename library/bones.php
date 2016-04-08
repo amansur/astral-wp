@@ -158,7 +158,7 @@ function astralweb_scripts_and_styles() {
 		// enqueue styles and scripts
 		wp_enqueue_script( 'astralweb-modernizr' );
 		wp_enqueue_script( 'jquery');
-		wp_enqueue_script( 'knockout';
+		wp_enqueue_script( 'knockout');
 //		wp_enqueue_script( 'angularjs-route');
 		wp_enqueue_script( 'astral-project');
 //		wp_enqueue_script( 'astral-project-display');
