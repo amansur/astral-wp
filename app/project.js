@@ -14,7 +14,10 @@ function ProjectListViewModel() {
 	self.getProjects();
 
 	console.log(self.projects);
+	foo = self.projects;
 }
+
+var foo;
 
 function Project(name, tags) {
 	var self = this;
