@@ -12,6 +12,8 @@ function ProjectListViewModel() {
 	}
 
 	self.getProjects();
+
+	console.log(self.projects);
 }
 
 function Project(name, tags) {
