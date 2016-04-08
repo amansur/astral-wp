@@ -8,9 +8,9 @@
 								<ul data-bind="foreach: projects">
 									<li>
 										<span data-bind="text: name"></span>
-										<span data-bind="foreach: tags">
+										<!-- <span data-bind="foreach: tags">
 											<span data-bind="text: name"></span>
-										</span>
+										</span> -->
 									</li>
 								</ul>
 							
