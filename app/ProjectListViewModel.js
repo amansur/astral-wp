@@ -1,9 +1,25 @@
 function ProjectListViewModel() {
 	var self = this;
-	self.projects = ko.observable();
-	self.tags = ko.observable();
+	self.projects = ko.observableArray();
+	self.tags = ko.observableArray();
+	self.selectedTags = ko.observableArray();
 	var tagList = {};
 	
+	self.selectedProjects = ko.computed(function() {
+        if(!self.selectedTags() || self.selectedTags().length == 0) {
+            return self.projects(); 
+        } else {
+            return ko.utils.arrayFilter(self.projects(), function(project) {
+            	var show;
+            	project.tags.forEach(function(val) {
+            		if (self.selectedTags().indexOf(val) !== -1)
+            			show = true;
+            	})
+                return show;
+            });
+        }
+    });
+
 	self.getTags = function() {
 		jQuery.get('/wp-json/wp/v2/project_tag', null, function(data) {
 			var obj = [];
@@ -17,7 +33,7 @@ function ProjectListViewModel() {
 		});
 	};
 
-	self.getProjects = function(tags) {
+	self.getProjects = function() {
 		jQuery.get('/wp-json/wp/v2/project', null, function(data) {
 			var obj = [];
 			for(var i = 0; i < data.length; i++) {
@@ -34,23 +50,5 @@ function ProjectListViewModel() {
 	}
 
 	self.getTags();
-	self.getProjects(self.tags());
+	self.getProjects();
 };
-
-
-function Project(id, name, tags, featureMedia) {
-	var self = this;
-	self.id = id;
-	self.name = name;
-	self.tags = tags;
-	self.featureMedia = featureMedia;
-}
-
-function Tag(id, name) {
-	var self = this;
-	self.id = id;
-	self.name = name;
-}
-
-ko.applyBindings(ProjectListViewModel());
-

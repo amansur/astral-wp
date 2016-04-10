@@ -39,6 +39,15 @@ module.exports = function(grunt) {
 				files: {
 					'../js/scripts.min.js': [
 						'../js/scripts.js'
+					],
+					'../../app/app.min.js': [
+						'../../app/app.js',
+						'../../app/Model.Project.js',
+						'../../app/Model.Tag.js',
+						'../../app/IntroViewModel.js',
+						'../../app/ProjectListViewModel.js',
+						'../../app/ProjectViewModel.js',
+						'../../app/AboutViewModel.js'
 					]
 				}
 			}
