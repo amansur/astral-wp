@@ -17,7 +17,7 @@
 				</ul>
 				<ul class="projects" data-bind="foreach: selectedProjects">
 					<li class="project" data-bind="event: {mouseover: showFeaturedImage, mouseout: hideFeaturedImage}">
-						<span data-bind="text: name"></span>
+						<span class="projectName" data-bind="text: name"></span>
 						<ol class="projectTags" data-bind="foreach: tags">
 							<li class="projectTag"> 
 								<span data-bind="text: name">

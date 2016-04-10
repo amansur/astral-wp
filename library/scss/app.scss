@@ -7,6 +7,11 @@ Stylesheet: Knockout Application Stylesheet
 
 ******************************************************************/
 
+body {
+	background-image: url('/wp-content/themes/astral-wp/library/images/background.jpg');
+	color: white;
+}
+
 #work {
 	.tags {
 		display: flex;
@@ -26,6 +31,13 @@ Stylesheet: Knockout Application Stylesheet
 
 		.project {
 			padding-right: 10px;
+			width: 50%;
+
+			.projectName {
+				color: black;
+				background-color: white;
+			}
+
 			.projectTags{
 				
 				.projectTag{
@@ -35,6 +47,7 @@ Stylesheet: Knockout Application Stylesheet
 
 			img {
 				width: 100px;
+				border: 3px solid black;
 			}
 		}
 	}
