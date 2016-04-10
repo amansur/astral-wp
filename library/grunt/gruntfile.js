@@ -63,7 +63,8 @@ module.exports = function(grunt) {
 					'../css/style.css': '../scss/style.scss',
 					'../css/ie.css': '../scss/ie.scss',
 					'../css/login.css': '../scss/login.scss',
-					'../css/admin.css': '../scss/admin.scss'
+					'../css/admin.css': '../scss/admin.scss',
+					'../css/app.css': '../scss/app.scss'
 				}
 			},
 			prod: {
@@ -74,7 +75,8 @@ module.exports = function(grunt) {
 					'../css/style.css': '../scss/style.scss',
 					'../css/ie.css': '../scss/ie.scss',
 					'../css/login.css': '../scss/login.scss',
-					'../css/admin.css': '../scss/admin.scss'
+					'../css/admin.css': '../scss/admin.scss',
+					'../css/app.css': '../scss/app.scss'
 				}
 			}
 		},
@@ -96,7 +98,7 @@ module.exports = function(grunt) {
 			},
 			js: {
 				files: [
-					'<%= jshint.all %>'
+					'<%= jshint.all %>', '../../app/*.js'
 				],
 				tasks: [
 					'jshint',

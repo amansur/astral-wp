@@ -10,20 +10,20 @@
 			</section> <!-- END #intro -->
 			<section id="work"> <!-- BEGIN #work -->
 				<ul class="tags" data-bind="foreach: tags">
-					<li>
-						<input type="checkbox" data-bind="checkedValue: $data, checked: selectedTags">
-						<span data-bind="text: name">
+					<li class="tag">
+						<input type="checkbox" data-bind="checkedValue: $data, checked: selectedTags, attr: {id: 'tag' + id}">
+						<label data-bind="text: name, attr: {for: 'tag' + id}"></label>
 					</li>
 				</ul>
 				<ul class="projects" data-bind="foreach: selectedProjects">
-					<li>
+					<li class="project" data-bind="event: {mouseover: showFeaturedImage, mouseout: hideFeaturedImage}">
 						<span data-bind="text: name"></span>
-						<ol data-bind="foreach: tags">
-							<li> 
+						<ol class="projectTags" data-bind="foreach: tags">
+							<li class="projectTag"> 
 								<span data-bind="text: name">
 							</li>
 						</ol>
-						<span data-bind="visible: false"><img data-bind="attr:{src: featureMedia}" /></span>
+						<span data-bind="visible: showImage"><img data-bind="attr: {src: featureMedia}" /></span>
 					</li>
 				</ul>
 			</section> <!-- END #work -->

@@ -4,6 +4,6 @@ function Project(id, name, tags, featureMedia, media) {
 	self.name = name;
 	self.tags = tags;
 	self.featureMedia = featureMedia;
-	show.media = media;
+	self.media = media;
 	self.showImage = ko.observable(false);
 };

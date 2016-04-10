@@ -133,6 +133,8 @@ function astralweb_scripts_and_styles() {
 		// ie-only style sheet
 		wp_register_style( 'astralweb-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
 
+		wp_register_style( 'astralweb-ko-stylesheet', get_stylesheet_directory_uri() . '/library/css/app.css', array(), '', 'all' );
+
 		wp_register_script( 'jquery', get_stylesheet_directory_uri().'/bower_components/jquery/dist/jquery.min.js', array(), '');
 
 		wp_register_script( 'knockout', get_stylesheet_directory_uri() . '/bower_components/knockout/dist/knockout.js', array('jquery'), '');
@@ -153,6 +155,7 @@ function astralweb_scripts_and_styles() {
 		wp_enqueue_script( 'knockout');
 		wp_enqueue_script( 'astral-ko-app');
 		wp_enqueue_style( 'astralweb-stylesheet' );
+		wp_enqueue_style( 'astralweb-ko-stylesheet' );
 		wp_enqueue_style( 'astralweb-ie-only' );
 
 		$wp_styles->add_data( 'astralweb-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet

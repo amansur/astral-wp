@@ -1,0 +1,33 @@
+/*
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Knockout Application Stylesheet
+
+******************************************************************/
+#work .tags {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: stretch;
+}
+#work .tags .tag {
+  margin-right: 10px;
+}
+#work .projects {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: stretch;
+  height: 375px;
+}
+#work .projects .project {
+  padding-right: 10px;
+}
+#work .projects .project .projectTags .projectTag {
+  display: inline-block;
+}
+#work .projects .project img {
+  width: 100px;
+}
+
+/*# sourceMappingURL=app.css.map */

@@ -23,15 +23,9 @@ Stylesheet: Knockout Application Stylesheet
 		flex-flow: column wrap;
 		align-content: stretch;
 		height: 375px;
-		/*column-count: 3;
-		-webkit-column-count: 3;
-        -moz-column-count: 3;*/
 
 		.project {
-			/*-webkit-column-break-inside: avoid;
-            page-break-inside: avoid;
-            break-inside: avoid;*/
-			
+			padding-right: 10px;
 			.projectTags{
 				
 				.projectTag{

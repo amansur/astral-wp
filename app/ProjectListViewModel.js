@@ -52,7 +52,9 @@ function ProjectListViewModel() {
 	};
 
 	self.showFeaturedImage = function(project) {
-		project.showImage(true);
+		if(project.featureMedia != null) {
+			project.showImage(true);
+		}
 	};
 	self.hideFeaturedImage = function(project) {
 		project.showImage(false);
