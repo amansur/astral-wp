@@ -117,6 +117,7 @@ function projectType() {
 			'show_admin_column' => true,
 			'show_ui' => true,
 			'query_var' => true,
+                        'show_in_rest' => true
 		)
 	);
 	
