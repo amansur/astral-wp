@@ -1,32 +1,61 @@
 function ProjectListViewModel() {
 	var self = this;
-	var tags = [new Tag("print"), new Tag("identity")];
-	self.projects = ko.observableArray();
+	
 
-	// [new Project("Project 1", tags),
-	// new Project("Project 2", tags),
-	// new Project("Project 3", tags)]
+	self.getTags = function() {
+		var allTags = {};
+		jQuery.get('/wp-json/wp/v2/project_tag', null, function(data) {
+			for(var i = 0; i < data.length; i++) {
+				var rec = data[i];
+				var tag = new Tag(rec.id, rec.name);
+				allTags[rec.id] = tag;
+				//self.tags.push(tag);
+			}
+		});
+		return allTags;
+	};
 
-	self.getProjects = function() {
-		jQuery.get('/wp-json/wp/v2/project', null, self.projects);
-	}
+	self.getProjects = function(tags) {
+		var allProjects = [];
+		jQuery.get('/wp-json/wp/v2/project', null, function(data) {
+			projectData = data;
+			for(var i = 0; i < data.length; i++) {
+				var rec = data[i];
+				var projectTags = [];
+				for(var j = 0; j < rec.project_tag.length; j++) {
+					projectTags.push(tags[rec.project_tag[j]])
+				}
+				var project = new Project(rec.id, rec.acf.display_name, projectTags, rec.acf.feature_image.url);
+				allProjects.push(project);
+			}
+		});
+		return allProjects;
+	};
 
-	self.getProjects();
-
-	console.log(self.projects);
+	var allTags = self.getTags();
+	var allProjects = self.getProjects(allTags);
+	
+	self.projects = ko.observableArray(allProjects);
+	self.tags = allTags;
+	
 	foo = self.projects;
+	bar = self.tags;
 }
 
 var foo;
+var bar;
 
-function Project(name, tags) {
+function Project(id, name, tags, featureMedia) {
 	var self = this;
+	self.id = id;
 	self.name = name;
 	self.tags = tags;
+	self.featureMedia = featureMedia;
 }
 
-function Tag(name) {
+function Tag(id, name) {
 	var self = this;
+	self.id = id;
 	self.name = name;
 }
 
