@@ -8,9 +8,10 @@
 								<ul data-bind="foreach: projects">
 									<li>
 										<span data-bind="text: name"></span>
-										<!-- <span data-bind="foreach: tags">
-											<span data-bind="text: name"></span>
-										</span> -->
+										<ol data-bind="foreach: tags">
+											<li data-bind="text: name"></li>
+										</ol>
+										<img data-bind="attr:{src: featureMedia}" />
 									</li>
 								</ul>
 							

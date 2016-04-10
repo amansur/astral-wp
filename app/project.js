@@ -1,49 +1,42 @@
 function ProjectListViewModel() {
 	var self = this;
+	self.projects = ko.observable();
+	self.tags = ko.observable();
+	var tagList = {};
 	
-
 	self.getTags = function() {
-		var allTags = {};
 		jQuery.get('/wp-json/wp/v2/project_tag', null, function(data) {
+			var obj = [];
 			for(var i = 0; i < data.length; i++) {
 				var rec = data[i];
 				var tag = new Tag(rec.id, rec.name);
-				allTags[rec.id] = tag;
-				//self.tags.push(tag);
+				obj.push(tag);
+				tagList[rec.id] = tag;
 			}
+			self.tags(obj);
 		});
-		return allTags;
 	};
 
 	self.getProjects = function(tags) {
-		var allProjects = [];
 		jQuery.get('/wp-json/wp/v2/project', null, function(data) {
-			projectData = data;
+			var obj = [];
 			for(var i = 0; i < data.length; i++) {
 				var rec = data[i];
 				var projectTags = [];
 				for(var j = 0; j < rec.project_tag.length; j++) {
-					projectTags.push(tags[rec.project_tag[j]])
+					projectTags.push(tagList[rec.project_tag[j]])
 				}
 				var project = new Project(rec.id, rec.acf.display_name, projectTags, rec.acf.feature_image.url);
-				allProjects.push(project);
+				obj.push(project);
 			}
+			self.projects(obj);
 		});
-		return allProjects;
-	};
+	}
 
-	var allTags = self.getTags();
-	var allProjects = self.getProjects(allTags);
-	
-	self.projects = ko.observableArray(allProjects);
-	self.tags = allTags;
-	
-	foo = self.projects;
-	bar = self.tags;
-}
+	self.getTags();
+	self.getProjects(self.tags());
+};
 
-var foo;
-var bar;
 
 function Project(id, name, tags, featureMedia) {
 	var self = this;
@@ -60,3 +53,4 @@ function Tag(id, name) {
 }
 
 ko.applyBindings(ProjectListViewModel());
+
