@@ -3,18 +3,6 @@ function StartViewModel() {
 	self.projects = ko.observableArray();
 	self.tags = ko.observableArray();
 	self.selectedTags = ko.observableArray();
-	// self.columnHeight = ko.computed(function () {
-	// 	var height = 0;
-	// 	if (self.selectedProjects == null) {
-	// 		return 300;
-	// 	}
-	// 	console.log(self.selectedProjects);
-	// 	self.selectedProjects.forEach(function(val) {
-	// 		height += val.displayHeight;
-	// 	});
-	// 	return height;
-	// });
-
 	self.columnHeight = ko.observable();
 	
 	var tagList = {};
@@ -80,4 +68,34 @@ function StartViewModel() {
 
 	self.getTags();
 	self.getProjects();
+};
+
+function IntroViewModel() {
+	var self = this;
+	self.introText = ko.observable();
+
+	self.getPage = function() {
+		jQuery.get('http://astr.nsur.org/wp-json/wp/v2/pages/164', null, function(data) {
+			self.introText(data.content.rendered);
+		});
+	};
+	
+	self.getPage();
+
+};
+
+function AboutViewModel() {
+	var self = this;
+	self.aboutText = ko.observable();
+	self.aboutTitle = ko.observable();
+
+	self.getPage = function() {
+		jQuery.get('http://astr.nsur.org/wp-json/wp/v2/pages/167', null, function(data) {
+			self.aboutText(data.content.rendered);
+			self.aboutTitle(data.title.rendered);
+		});
+	};
+	
+	self.getPage();
+
 };

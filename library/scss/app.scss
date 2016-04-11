@@ -9,14 +9,23 @@ Stylesheet: Knockout Application Stylesheet
 
 body {
 	background-image: url('/wp-content/themes/astral-wp/library/images/background.jpg');
+	background-attachment: fixed;
+	background-size: cover;
 	color: white;
 }
 
 #work {
+	border-top: 2px solid white;
+
+	h1 {
+		margin-top: 0;
+	}
+
 	.tags {
 		display: flex;
-		flex-flow: row wrap;
+		flex-flow: column;
 		align-content: stretch;
+		text-transform: capitalize;
 		
 		.tag {
 			margin-right: 10px;
@@ -27,6 +36,7 @@ body {
 		display: flex;
 		flex-flow: column wrap;
 		align-content: stretch;
+		min-height: 200px;
 		/*height: 375px;*/
 
 		.project {
@@ -62,5 +72,13 @@ body {
 				border: 3px solid black;
 			}
 		}
+	}
+}
+
+#about {
+	border-top: 2px solid white;
+
+	h1 {
+		margin-top: 0;
 	}
 }

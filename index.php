@@ -7,9 +7,10 @@
 		<main id="main" class="m-all t-2of3 d-7of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 			<!-- <div data-bind="page: {id: 'start', title: 'Astral Studio'}"> -->
 				<section id="intro"> <!-- BEGIN #intro -->
-					<!-- <div data-bind="html: text"></div> -->
+					<h1 data-bind="html: introText"></h1>
 				</section> <!-- END #intro -->
 				<section id="work"> <!-- BEGIN #work -->
+					<h1>Our Work</h1>
 					<ul class="tags" data-bind="foreach: tags">
 						<li class="tag">
 							<input type="checkbox" data-bind="checkedValue: $data, checked: selectedTags, attr: {id: 'tag' + id}" />
@@ -29,11 +30,13 @@
 					</ul>
 				</section> <!-- END #work -->
 				<section id="about"> <!-- BEGIN #about -->
+					<h1 data-bind="text: aboutTitle"></h1>
+					<span data-bind="html: aboutText"></span>
 					<!-- <div data-bind="html: text"></div> -->
 				</section> <!-- END #about -->
-			<!-- </div>
+			<!-- </div> -->
 
-			<div data-bind="page: {id: 'project', params: ['id'], title: 'Astral Studio'}">
+			<!-- <div data-bind="page: {id: 'project', params: ['id'], title: 'Astral Studio'}">
 
 			</div> -->
 		</main> <!-- END #main -->
