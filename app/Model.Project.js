@@ -1,4 +1,4 @@
-function Project(id, name, tags, featureMedia, media) {
+function Project(id, name, tags, featureMedia, media, displayHeight) {
 	var self = this;
 	self.id = id;
 	self.name = name;
@@ -6,4 +6,5 @@ function Project(id, name, tags, featureMedia, media) {
 	self.featureMedia = featureMedia;
 	self.media = media;
 	self.showImage = ko.observable(false);
+	self.displayHeight = displayHeight;
 };

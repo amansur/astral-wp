@@ -1,5 +1,6 @@
-function Media(url, description) {
+function Media(content, description, type) {
 	var self = this;
-	self.url = url;
+	self.content = content;
 	self.description = description;
+	self.type = type
 };

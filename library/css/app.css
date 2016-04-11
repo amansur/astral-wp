@@ -23,18 +23,30 @@ body {
   display: flex;
   flex-flow: column wrap;
   align-content: stretch;
-  height: 375px;
+  /*height: 375px;*/
 }
 #work .projects .project {
   padding-right: 10px;
-  width: 50%;
+  margin-bottom: 20px;
+  width: 33%;
+  position: relative;
+}
+#work .projects .project .projectImage {
+  position: absolute;
+  z-index: 99;
 }
 #work .projects .project .projectName {
   color: black;
   background-color: white;
 }
+#work .projects .project .projectTags {
+  margin: 0;
+}
 #work .projects .project .projectTags .projectTag {
   display: inline-block;
+}
+#work .projects .project .projectTags .projectTag ~ .projectTag:before {
+  content: "^";
 }
 #work .projects .project img {
   width: 100px;

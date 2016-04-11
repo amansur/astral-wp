@@ -135,11 +135,13 @@ function astralweb_scripts_and_styles() {
 
 		wp_register_style( 'astralweb-ko-stylesheet', get_stylesheet_directory_uri() . '/library/css/app.css', array(), '', 'all' );
 
-		wp_register_script( 'jquery', get_stylesheet_directory_uri().'/bower_components/jquery/dist/jquery.min.js', array(), '');
+		wp_register_script( 'jquery_local', get_stylesheet_directory_uri().'/bower_components/jquery/dist/jquery.min.js', array(), '');
 
-		wp_register_script( 'knockout', get_stylesheet_directory_uri() . '/bower_components/knockout/dist/knockout.js', array('jquery'), '');
+		wp_register_script( 'knockout', get_stylesheet_directory_uri() . '/bower_components/knockout/dist/knockout.js', array('jquery_local'), '');
 
-		wp_register_script( 'astral-ko-app', get_stylesheet_directory_uri() . '/app/app.min.js', array('knockout'), '', true);
+		// wp_register_script( 'pager', get_stylesheet_directory_uri().'/bower_components/pagerjs/pager.js', array('jquery', 'knockout'), '');
+
+		wp_register_script( 'astral-ko-app', get_stylesheet_directory_uri() . '/app/app.min.js', array('knockout', 'jquery_local'), '', true);
 
     // comment reply script for threaded comments
     if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
@@ -147,12 +149,13 @@ function astralweb_scripts_and_styles() {
     }
 
 		//adding scripts file in the footer
-		wp_register_script( 'astralweb-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
+		wp_register_script( 'astralweb-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery_local' ), '', true );
 
 		// enqueue styles and scripts
 		wp_enqueue_script( 'astralweb-modernizr' );
-		wp_enqueue_script( 'jquery');
+		wp_enqueue_script( 'jquery_local');
 		wp_enqueue_script( 'knockout');
+		// wp_enqueue_script( 'pager');
 		wp_enqueue_script( 'astral-ko-app');
 		wp_enqueue_style( 'astralweb-stylesheet' );
 		wp_enqueue_style( 'astralweb-ko-stylesheet' );

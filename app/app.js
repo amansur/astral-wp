@@ -1,1 +1,2 @@
-ko.applyBindings(ProjectListViewModel(), document.getElementById('work'));
+// pager.extendWithPage(StartViewModel);
+ko.applyBindings(StartViewModel());// pager.start();

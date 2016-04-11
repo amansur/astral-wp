@@ -27,21 +27,33 @@ body {
 		display: flex;
 		flex-flow: column wrap;
 		align-content: stretch;
-		height: 375px;
+		/*height: 375px;*/
 
 		.project {
 			padding-right: 10px;
-			width: 50%;
+			margin-bottom: 20px;
+			width: 33%;
+			position: relative;
+
+			.projectImage {
+				position: absolute;
+				z-index: 99;
+			}
 
 			.projectName {
 				color: black;
 				background-color: white;
 			}
 
-			.projectTags{
-				
-				.projectTag{
+			.projectTags {
+				margin: 0;
+
+				.projectTag {
 					display: inline-block;
+				}
+
+				.projectTag ~ .projectTag:before {
+					content: "^";
 				}
 			}
 

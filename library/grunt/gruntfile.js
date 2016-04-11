@@ -44,10 +44,9 @@ module.exports = function(grunt) {
 						'../../app/app.js',
 						'../../app/Model.Project.js',
 						'../../app/Model.Tag.js',
-						'../../app/IntroViewModel.js',
-						'../../app/ProjectListViewModel.js',
-						'../../app/ProjectViewModel.js',
-						'../../app/AboutViewModel.js'
+						'../../app/Model.Media.js',
+						'../../app/StartViewModel.js',
+						'../../app/ProjectViewModel.js'
 					]
 				}
 			}
@@ -98,7 +97,12 @@ module.exports = function(grunt) {
 			},
 			js: {
 				files: [
-					'<%= jshint.all %>', '../../app/*.js'
+					'<%= jshint.all %>',
+					'../../app/StartViewModel.js',
+					'../../app/Model.Media.js',
+					'../../app/Model.Project.js',
+					'../../app/Model.Tag.js',
+					'../../app/app.js'
 				],
 				tasks: [
 					'jshint',

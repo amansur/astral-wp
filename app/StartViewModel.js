@@ -1,21 +1,38 @@
-var foo;
-function ProjectListViewModel() {
+function StartViewModel() {
 	var self = this;
 	self.projects = ko.observableArray();
 	self.tags = ko.observableArray();
 	self.selectedTags = ko.observableArray();
+	// self.columnHeight = ko.computed(function () {
+	// 	var height = 0;
+	// 	if (self.selectedProjects == null) {
+	// 		return 300;
+	// 	}
+	// 	console.log(self.selectedProjects);
+	// 	self.selectedProjects.forEach(function(val) {
+	// 		height += val.displayHeight;
+	// 	});
+	// 	return height;
+	// });
+
+	self.columnHeight = ko.observable();
+	
 	var tagList = {};
 	
 	self.selectedProjects = ko.computed(function() {
         if(!self.selectedTags() || self.selectedTags().length == 0) {
+        	self.columnHeight(0);
+        	self.projects().forEach(function(val) { self.columnHeight(self.columnHeight() + val.displayHeight);});
             return self.projects(); 
         } else {
+        	self.columnHeight(0);
             return ko.utils.arrayFilter(self.projects(), function(project) {
             	var show;
             	project.tags.forEach(function(val) {
             		if (self.selectedTags().indexOf(val) !== -1)
             			show = true;
             	})
+            	if (show) self.columnHeight(self.columnHeight() + project.displayHeight);
                 return show;
             });
         }
@@ -36,7 +53,6 @@ function ProjectListViewModel() {
 
 	self.getProjects = function() {
 		jQuery.get('/wp-json/wp/v2/project', null, function(data) {
-			foo = data;
 			var obj = [];
 			for(var i = 0; i < data.length; i++) {
 				var rec = data[i];
@@ -44,7 +60,8 @@ function ProjectListViewModel() {
 				for(var j = 0; j < rec.project_tag.length; j++) {
 					projectTags.push(tagList[rec.project_tag[j]])
 				}
-				var project = new Project(rec.id, rec.acf.display_name, projectTags, rec.acf.feature_image.url, null);
+				var displayHeight = 39 + 24 * (Math.ceil(projectTags.length / 4));
+				var project = new Project(rec.id, rec.acf.display_name, projectTags, rec.acf.feature_image.url, null, displayHeight);
 				obj.push(project);
 			}
 			self.projects(obj);
