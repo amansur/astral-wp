@@ -1,7 +1,6 @@
 // pager.extendWithPage(StartViewModel);
-ko.applyBindings(IntroViewModel(), document.getElementById('intro'));
-ko.applyBindings(StartViewModel(), document.getElementById('work'));
-ko.applyBindings(AboutViewModel(), document.getElementById('about'));
+// ko.applyBindings(IntroViewModel(), document.getElementById('intro'));
+ko.applyBindings(StartViewModel(), document.getElementById('main'));
 // pager.start();
 
 

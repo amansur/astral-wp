@@ -139,6 +139,8 @@ function astralweb_scripts_and_styles() {
 
 		wp_register_script( 'knockout', get_stylesheet_directory_uri() . '/bower_components/knockout/dist/knockout.js', array('jquery_local'), '');
 
+		wp_register_script( 'grapnel', get_stylesheet_directory_uri() . '/bower_components/grapnel/dist/grapnel.min.js', array('knockout'), '');
+
 		// wp_register_script( 'pager', get_stylesheet_directory_uri().'/bower_components/pagerjs/pager.js', array('jquery', 'knockout'), '', true);
 
 		wp_register_script( 'astral-ko-app', get_stylesheet_directory_uri() . '/app/app.min.js', array('knockout', 'jquery_local'), '', true);
@@ -155,7 +157,7 @@ function astralweb_scripts_and_styles() {
 		wp_enqueue_script( 'astralweb-modernizr' );
 		wp_enqueue_script( 'jquery_local');
 		wp_enqueue_script( 'knockout');
-		// wp_enqueue_script( 'pager');
+		wp_enqueue_script( 'grapnel');
 		wp_enqueue_script( 'astral-ko-app');
 		wp_enqueue_style( 'astralweb-stylesheet' );
 		wp_enqueue_style( 'astralweb-ko-stylesheet' );
