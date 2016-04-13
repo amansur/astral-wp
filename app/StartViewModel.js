@@ -1,17 +1,24 @@
 function StartViewModel() {
+	var columnCount = 3;
 	var tagList = {};
 	var self = this;
-	self.columnHeight = ko.observable();
-	self.projects = ko.observableArray();
-	self.tags = ko.observableArray();
-	self.selectedTags = ko.observableArray();
-	self.selectedProjects = ko.computed(function() {
-        if(!self.selectedTags() || self.selectedTags().length == 0) {
+	
+	self.columnHeight 		= ko.observable();
+	self.visibleImageUrl 	= ko.observable();
+	self.introText 			= ko.observable();
+	self.footer 			= ko.observableArray();
+	self.projects 			= ko.observableArray();
+	self.tags 				= ko.observableArray();
+	self.selectedTags 		= ko.observableArray();
+	
+	self.getSelectedProjects = function() {
+		if(!self.selectedTags() || self.selectedTags().length === 0) {
         	self.columnHeight(0);
         	self.projects().forEach(function(val) { self.columnHeight(self.columnHeight() + val.displayHeight);});
             return self.projects(); 
         } else {
         	self.columnHeight(0);
+            
             return ko.utils.arrayFilter(self.projects(), function(project) {
             	var show;
             	project.tags.forEach(function(val) {
@@ -22,8 +29,29 @@ function StartViewModel() {
                 return show;
             });
         }
-    });
+	};
 
+	self.selectedProjects = ko.computed(getSelectedProjects);
+
+	self.getSelectedProjects2 = function() {
+		if (!self.selectedTags() || self.selectedTags().length === 0) {
+			return SplitArrayIntoN(self.projects(), columnCount);
+		} else {
+			var filteredProjects = ko.utils.arrayFilter(self.projects(), function(project) {
+            	var show;
+            	project.tags.forEach(function(val) {
+            		if (self.selectedTags().indexOf(val) !== -1)
+            			show = true;
+            	})
+            	if (show) self.columnHeight(self.columnHeight() + project.displayHeight);
+                return show;
+            });
+            return SplitArrayIntoN(filteredProjects, columnCount);
+		}
+	};
+
+	self.selectedProjects2 = ko.computed(getSelectedProjects2);	
+	
 	self.getTags = function() {
 		jQuery.get('/wp-json/wp/v2/project_tag', null, function(data) {
 			var obj = [];
@@ -54,44 +82,6 @@ function StartViewModel() {
 		});
 	};
 
-	self.showFeaturedImage = function(project, event) {
-		if (project.featureMedia != null && project.featureMedia != 0) {
-			self.getImage(project.featureMedia);
-			project.featureMediaUrl(self.visibleImageUrl());
-			setTimeout(function() { project.showImage(true)}, 100);
-		}
-		jQuery('.projectImage').css('position', 'absolute').css('top', event.pageY + 40).css('left', event.pageX);
-	};
-	self.hideFeaturedImage = function(project) {
-		project.showImage(false);
-		self.visibleImageUrl(null);
-	};
-
-
-	self.getTags();
-	setTimeout(self.getProjects, 500);
-
-	self.introText = ko.observable();
-
-	// self.getIntro = function() {
-	// 	jQuery.get('http://astr.nsur.org/wp-json/wp/v2/pages/164', null, function(data) {
-	// 		self.introText(data.content.rendered);
-	// 	});
-	// };
-	
-	// self.getIntro();
-
-	self.footer = ko.observableArray();
-
-	// self.getAbout = function() {
-	// 	jQuery.get('http://astr.nsur.org/wp-json/wp/v2/pages/167', null, function(data) {
-	// 		self.aboutText(data.content.rendered);
-	// 		self.aboutTitle(data.title.rendered);
-	// 	});
-	// };
-	
-	// self.getAbout();
-
 	self.getConfig = function() {
 		jQuery.get('http://astr.nsur.org/wp-json/wp/v2/config/174', null, function(data) { //174 astr 173 local
 			self.introText(data.acf.heading);
@@ -106,13 +96,27 @@ function StartViewModel() {
 		});
 	};
 
-	self.visibleImageUrl = ko.observable();
 	self.getImage = function(id) {
 		jQuery.get('/wp-json/wp/v2/media/'+id, null, function(data) {
 			self.visibleImageUrl(data.media_details.sizes.thumbnail.source_url);
 		});
 	};
 
+	self.showFeaturedImage = function(project, event) {
+		if (project.featureMedia != null && project.featureMedia != 0) {
+			self.getImage(project.featureMedia);
+			project.featureMediaUrl(self.visibleImageUrl());
+			setTimeout(function() { project.showImage(true)}, 100);
+		}
+		jQuery('.projectImage').css('position', 'absolute').css('top', event.pageY + 40).css('left', event.pageX);
+	};
+	
+	self.hideFeaturedImage = function(project) {
+		project.showImage(false);
+		self.visibleImageUrl(null);
+	};
+
+	self.getTags();
+	self.getProjects();
 	self.getConfig();
 };
-var foo;

@@ -31,16 +31,15 @@ h1 {
   margin-bottom: 4px;
 }
 #work .projects {
-  display: flex;
+  /*display: flex;
   flex-flow: column wrap;
   align-content: stretch;
-  min-height: 175px;
+  min-height: 175px;*/
   margin-top: 40px;
 }
 #work .projects .project {
   padding-right: 10px;
   margin-bottom: 20px;
-  width: 33%;
   position: relative;
 }
 #work .projects .project .projectName {
@@ -76,7 +75,7 @@ h1 {
   font-family: "Courier";
 }
 
-#work > div:first-child, #about > div:first-child {
+#work, #about {
   border-top: 2px solid white;
 }
 

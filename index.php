@@ -15,19 +15,23 @@
 		<main id="main" class="m-all t-2of3 d-7of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 			<section id="intro"> 				<!-- BEGIN #intro -->
 				<div class="row"> 
-					<h1 data-bind="html: introText"></h1>
+					<h1 class="col-sm-12" data-bind="html: introText"></h1>
 				</div>
 			</section> 							<!-- END #intro -->
 			<section id="work"> 				<!-- BEGIN #work -->
 				<div class="row">
-					<h1 class="col">Our Work</h1>
-					<ul class="col tags" data-bind="foreach: tags">
+					<h1 class="col-sm-12">Our Work</h1>
+				</div>
+				<div class="row">
+					<ul class="col-sm-12 tags" data-bind="foreach: tags">
 						<li class="tag">
 							<input class="css-checkbox" type="checkbox" data-bind="checkedValue: $data, checked: selectedTags, attr: {id: 'tag' + id}" />
 							<label class="css-label" data-bind="text: name, attr: {for: 'tag' + id}"></label>
 						</li>
 					</ul>
-					<ul class="col projects" data-bind="style: {height: columnHeight() / 2 + 'px'}, foreach: selectedProjects">
+				</div>
+				<ul class="row projects" data-bind="foreach: selectedProjects2">
+					<div class="col-sm-4" data-bind="foreach: $data">
 						<li class="project">
 							<span class="projectName" data-bind="text: name, event: {mouseenter: showFeaturedImage, mouseleave: hideFeaturedImage}"></span>
 							<ol class="projectTags" data-bind="foreach: tags">
@@ -36,9 +40,9 @@
 								</li>
 							</ol>
 						</li>
-					</ul>
-					<span class="projectImage" data-bind="visible: visibleImageUrl() != null"><img data-bind="attr: {src: visibleImageUrl()}" /></span>
-				</div>
+					</div>
+				</ul>
+				<span class="projectImage" data-bind="visible: visibleImageUrl() != null"><img data-bind="attr: {src: visibleImageUrl()}" /></span>
 			</section> 							<!-- END #work -->
 			<section id="about"> 				<!-- BEGIN #about -->
 				<div class="row">
@@ -51,7 +55,7 @@
 					</div>
 				</div>
 			</section> 							<!-- END #about -->
-		</main> 									<!-- END #main -->
+		</main> 								<!-- END #main -->
 
 	</div> <!-- END #inner-content -->
 

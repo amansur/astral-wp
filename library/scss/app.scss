@@ -36,19 +36,16 @@ h1 {
 	}
 
 	.projects {
-		display: flex;
+		/*display: flex;
 		flex-flow: column wrap;
 		align-content: stretch;
-		min-height: 175px;
+		min-height: 175px;*/
 		margin-top: 40px;
 
 		.project {
 			padding-right: 10px;
 			margin-bottom: 20px;
-			width: 33%;
 			position: relative;
-
-			
 
 			.projectName {
 				color: black;
@@ -93,7 +90,7 @@ h1 {
 	}
 }
 
-#work > div:first-child, #about > div:first-child {
+#work, #about {
 	border-top: 2px solid white;
 }
 

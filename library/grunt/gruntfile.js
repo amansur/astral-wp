@@ -47,7 +47,8 @@ module.exports = function(grunt) {
 						'../../app/Model.Media.js',
 						'../../app/StartViewModel.js',
 						'../../app/ProjectViewModel.js',
-						'../../app/Route.js'
+						'../../app/Route.js',
+						'../../app/functions.js'
 					]
 				}
 			}

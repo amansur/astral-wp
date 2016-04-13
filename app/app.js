@@ -1,6 +1,7 @@
 // pager.extendWithPage(StartViewModel);
 // ko.applyBindings(IntroViewModel(), document.getElementById('intro'));
-ko.applyBindings(StartViewModel(), document.getElementById('main'));
+var vm = StartViewModel();
+ko.applyBindings(vm, document.getElementById('main'));
 // pager.start();
 
 
@@ -16,4 +17,4 @@ ko.applyBindings(StartViewModel(), document.getElementById('main'));
 // // pager.start();
 // pager.startHistoryJs();
 
-jQuery('.project').on('mouseleave', function() { jQuery('.projectImage').show();});
+// jQuery('.project').on('mouseleave', function() { jQuery('.projectImage').hide();});
