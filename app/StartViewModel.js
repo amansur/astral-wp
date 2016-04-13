@@ -30,20 +30,20 @@ function StartViewModel() {
 	
 	self.getTags = function() {
 		jQuery.get('/wp-json/wp/v2/project_tag', null, function(data) {
-			var _tags = [];
+			var obj = [];
 			for(var i = 0; i < data.length; i++) {
 				var rec = data[i];
 				var tag = new Tag(rec.id, rec.name);
-				_tags.push(tag);
+				obj.push(tag);
 				tagList[rec.id] = tag;
 			}
-			self.tags(_tags);
+			self.tags(obj);
 		});
 	};
 
 	self.getProjects = function() {
 		jQuery.get('http://astr.nsur.org/wp-json/wp/v2/project', null, function(data) {
-			var _projects = [];
+			var obj = [];
 			for(var i = 0; i < data.length; i++) {
 				var rec = data[i];
 				var projectTags = [];
@@ -52,9 +52,9 @@ function StartViewModel() {
 				}
 				var displayHeight = 39 + 24 * (Math.ceil(projectTags.length / 6));
 				var project = new Project(rec.id, rec.acf.display_name, projectTags, rec.acf.feature_image, null, displayHeight);
-				_projects.push(project);
+				obj.push(project);
 			}
-			self.projects(_projects);
+			self.projects(obj);
 		});
 	};
 
