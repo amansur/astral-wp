@@ -14,9 +14,11 @@ body {
 	color: white !important;
 }
 
-#work {
-	border-top: 2px solid white;
+h1 {
+	font-size: 3em !important;
+}
 
+#work {
 	h1 {
 		margin-top: 0;
 	}
@@ -29,6 +31,7 @@ body {
 		
 		.tag {
 			margin-right: 10px;
+			margin-bottom: 4px;
 		}
 	}
 
@@ -36,8 +39,8 @@ body {
 		display: flex;
 		flex-flow: column wrap;
 		align-content: stretch;
-		min-height: 200px;
-		/*height: 375px;*/
+		min-height: 175px;
+		margin-top: 40px;
 
 		.project {
 			padding-right: 10px;
@@ -45,10 +48,7 @@ body {
 			width: 33%;
 			position: relative;
 
-			.projectImage {
-				position: absolute;
-				z-index: 99;
-			}
+			
 
 			.projectName {
 				color: black;
@@ -61,6 +61,7 @@ body {
 
 				.projectTag {
 					display: inline-block;
+					font-family: "Courier";
 				}
 
 				.projectTag ~ .projectTag:before {
@@ -69,21 +70,31 @@ body {
 					bottom: 2px;
 				}
 			}
+		}
+	}
+	.projectImage {
+		position: absolute;
+		z-index: 99;
 
-			img {
-				width: 100px;
-				border: 3px solid black;
-			}
+		img {
+			width: 100px;
+			border: 3px solid black;
 		}
 	}
 }
 
 #about {
-	border-top: 2px solid white;
-
 	h1 {
 		margin-top: 0;
 	}
+
+	p {
+		font-family: "Courier";
+	}
+}
+
+#work > div:first-child, #about > div:first-child {
+	border-top: 2px solid white;
 }
 
 #nav {

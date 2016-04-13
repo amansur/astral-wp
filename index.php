@@ -9,14 +9,17 @@
 
 <div id="content">
 
-	<div id="inner-content" class="wrap cf">
+	<!-- <div id="inner-content" class="wrap cf"> -->
 	<div id="inner-content" class="container">
 
 		<main id="main" class="m-all t-2of3 d-7of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-				<section id="intro" class="row"> <!-- BEGIN #intro -->
+			<section id="intro"> 				<!-- BEGIN #intro -->
+				<div class="row"> 
 					<h1 data-bind="html: introText"></h1>
-				</section> <!-- END #intro -->
-				<section id="work" class="row"> <!-- BEGIN #work -->
+				</div>
+			</section> 							<!-- END #intro -->
+			<section id="work"> 				<!-- BEGIN #work -->
+				<div class="row">
 					<h1 class="col">Our Work</h1>
 					<ul class="col tags" data-bind="foreach: tags">
 						<li class="tag">
@@ -26,29 +29,29 @@
 					</ul>
 					<ul class="col projects" data-bind="style: {height: columnHeight() / 2 + 'px'}, foreach: selectedProjects">
 						<li class="project">
-							<span class="projectName" data-bind="text: name, event: {mouseover: showFeaturedImage, mouseout: hideFeaturedImage}"></span>
+							<span class="projectName" data-bind="text: name, event: {mouseenter: showFeaturedImage, mouseleave: hideFeaturedImage}"></span>
 							<ol class="projectTags" data-bind="foreach: tags">
 								<li class="projectTag"> 
 									<span data-bind="text: name"></span>
 								</li>
 							</ol>
-							<span class="projectImage" data-bind="visible: showImage"><img data-bind="attr: {src: featureMedia}" /></span>
 						</li>
 					</ul>
-				</section> <!-- END #work -->
-				<section id="about"> <!-- BEGIN #about -->
-					<div class="row">
-						<h1 class="col-sm-12">About Us</h1>
+					<span class="projectImage" data-bind="visible: visibleImageUrl() != null"><img data-bind="attr: {src: visibleImageUrl()}" /></span>
+				</div>
+			</section> 							<!-- END #work -->
+			<section id="about"> 				<!-- BEGIN #about -->
+				<div class="row">
+					<h1 class="col-sm-12">About Us</h1>
+				</div>
+				<div class="row" data-bind="foreach: footer">
+					<div class="col-sm-4" data-bind="foreach: $data">
+							<h2 data-bind="text: heading"></h2>
+							<span data-bind="html: content"></span>
 					</div>
-					<div class="row" data-bind="foreach: footer">
-						<div class="col-sm-4" data-bind="foreach: $data">
-								<h2 data-bind="text: heading"></h2>
-								<span data-bind="html: content"></span>
-						</div>
-					</div>
-				</section> <!-- END #about -->
-			<!-- </div> -->
-		</main> <!-- END #main -->
+				</div>
+			</section> 							<!-- END #about -->
+		</main> 									<!-- END #main -->
 
 		<main id="project" class="m-all t-2of3 d-7of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 			<!-- <div data-bind="page: {id: 'start', title: 'Astral Studio'}"> -->
