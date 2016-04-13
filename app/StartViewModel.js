@@ -91,7 +91,7 @@ function StartViewModel() {
 	// self.getAbout();
 
 	self.getConfig = function() {
-		jQuery.get('/wp-json/wp/v2/config/173', null, function(data) {
+		jQuery.get('/wp-json/wp/v2/config/174', null, function(data) {
 			self.introText(data.acf.heading);
 			data.acf.footer.forEach(function(column) {
 				var _column = [];
