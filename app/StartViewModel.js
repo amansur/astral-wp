@@ -1,12 +1,10 @@
 function StartViewModel() {
+	var tagList = {};
 	var self = this;
+	self.columnHeight = ko.observable();
 	self.projects = ko.observableArray();
 	self.tags = ko.observableArray();
 	self.selectedTags = ko.observableArray();
-	self.columnHeight = ko.observable();
-	
-	var tagList = {};
-	
 	self.selectedProjects = ko.computed(function() {
         if(!self.selectedTags() || self.selectedTags().length == 0) {
         	self.columnHeight(0);
@@ -67,27 +65,44 @@ function StartViewModel() {
 
 
 	self.getTags();
-	self.getProjects();
+	setTimeout(self.getProjects, 500);
 
 	self.introText = ko.observable();
 
-	self.getIntro = function() {
-		jQuery.get('http://astr.nsur.org/wp-json/wp/v2/pages/164', null, function(data) {
-			self.introText(data.content.rendered);
-		});
-	};
+	// self.getIntro = function() {
+	// 	jQuery.get('http://astr.nsur.org/wp-json/wp/v2/pages/164', null, function(data) {
+	// 		self.introText(data.content.rendered);
+	// 	});
+	// };
 	
-	self.getIntro();
+	// self.getIntro();
 
 	self.aboutText = ko.observable();
 	self.aboutTitle = ko.observable();
+	self.footer = ko.observableArray([]);
 
-	self.getAbout = function() {
-		jQuery.get('http://astr.nsur.org/wp-json/wp/v2/pages/167', null, function(data) {
-			self.aboutText(data.content.rendered);
-			self.aboutTitle(data.title.rendered);
+	// self.getAbout = function() {
+	// 	jQuery.get('http://astr.nsur.org/wp-json/wp/v2/pages/167', null, function(data) {
+	// 		self.aboutText(data.content.rendered);
+	// 		self.aboutTitle(data.title.rendered);
+	// 	});
+	// };
+	
+	// self.getAbout();
+
+	self.getConfig = function() {
+		jQuery.get('/wp-json/wp/v2/config/173', null, function(data) {
+			self.introText(data.acf.heading);
+			data.acf.footer.forEach(function(column) {
+				var _column = [];
+				column.column.forEach(function(item) {
+					var _item = {heading: item.heading, content: item.content};
+					_column.push(_item);
+				});
+				self.footer.push(_column);
+			});
 		});
 	};
-	
-	self.getAbout();
+
+	self.getConfig();
 };

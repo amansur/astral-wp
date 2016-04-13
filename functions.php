@@ -29,7 +29,9 @@ function astralweb_ahoy() {
 
   // USE THIS TEMPLATE TO CREATE CUSTOM POST TYPES EASILY
     require_once( 'library/project-post-type.php' );
+    require_once( 'library/config-post-type.php' );
     require_once( 'library/project-field-group.php' );
+    require_once( 'library/start-field-group.php' );
 
   // launching operation cleanup
   add_action( 'init', 'astralweb_head_cleanup' );

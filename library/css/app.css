@@ -10,7 +10,7 @@ body {
   background-image: url("/wp-content/themes/astral-wp/library/images/background.jpg");
   background-attachment: fixed;
   background-size: cover;
-  color: white;
+  color: white !important;
 }
 
 #work {
@@ -57,7 +57,9 @@ body {
   display: inline-block;
 }
 #work .projects .project .projectTags .projectTag ~ .projectTag:before {
-  content: "^";
+  content: '\25a0';
+  position: relative;
+  bottom: 2px;
 }
 #work .projects .project img {
   width: 100px;
@@ -69,6 +71,31 @@ body {
 }
 #about h1 {
   margin-top: 0;
+}
+
+#nav .menu .menuItem {
+  background-color: black;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  position: fixed;
+  width: 125px;
+  left: -35px;
+  top: 175px;
+  text-align: center;
+  font-size: 24px;
+  padding: 10px;
+  vertical-align: middle;
+}
+#nav .menu .menuItem a {
+  color: white;
+  font-weight: bold;
+}
+#nav .menu .menuItem a:hover {
+  text-decoration: none;
+}
+#nav .menu .menuItem:nth-child(2) {
+  top: 315px;
 }
 
 input[type=checkbox].css-checkbox {
