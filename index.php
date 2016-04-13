@@ -30,7 +30,7 @@
 						</li>
 					</ul>
 				</div>
-				<ul class="row projects" data-bind="foreach: selectedProjects2">
+				<ul class="row projects" data-bind="foreach: selectedProjects">
 					<div class="col-sm-4" data-bind="foreach: $data">
 						<li class="project">
 							<span class="projectName" data-bind="text: name, event: {mouseenter: showFeaturedImage, mouseleave: hideFeaturedImage}"></span>

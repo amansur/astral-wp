@@ -3,37 +3,14 @@ function StartViewModel() {
 	var tagList = {};
 	var self = this;
 	
-	self.columnHeight 		= ko.observable();
 	self.visibleImageUrl 	= ko.observable();
 	self.introText 			= ko.observable();
 	self.footer 			= ko.observableArray();
 	self.projects 			= ko.observableArray();
 	self.tags 				= ko.observableArray();
 	self.selectedTags 		= ko.observableArray();
-	
+
 	self.getSelectedProjects = function() {
-		if(!self.selectedTags() || self.selectedTags().length === 0) {
-        	self.columnHeight(0);
-        	self.projects().forEach(function(val) { self.columnHeight(self.columnHeight() + val.displayHeight);});
-            return self.projects(); 
-        } else {
-        	self.columnHeight(0);
-            
-            return ko.utils.arrayFilter(self.projects(), function(project) {
-            	var show;
-            	project.tags.forEach(function(val) {
-            		if (self.selectedTags().indexOf(val) !== -1)
-            			show = true;
-            	})
-            	if (show) self.columnHeight(self.columnHeight() + project.displayHeight);
-                return show;
-            });
-        }
-	};
-
-	self.selectedProjects = ko.computed(getSelectedProjects);
-
-	self.getSelectedProjects2 = function() {
 		if (!self.selectedTags() || self.selectedTags().length === 0) {
 			return SplitArrayIntoN(self.projects(), columnCount);
 		} else {
@@ -43,31 +20,30 @@ function StartViewModel() {
             		if (self.selectedTags().indexOf(val) !== -1)
             			show = true;
             	})
-            	if (show) self.columnHeight(self.columnHeight() + project.displayHeight);
                 return show;
             });
             return SplitArrayIntoN(filteredProjects, columnCount);
 		}
 	};
 
-	self.selectedProjects2 = ko.computed(getSelectedProjects2);	
+	self.selectedProjects = ko.computed(getSelectedProjects);	
 	
 	self.getTags = function() {
 		jQuery.get('/wp-json/wp/v2/project_tag', null, function(data) {
-			var obj = [];
+			var _tags = [];
 			for(var i = 0; i < data.length; i++) {
 				var rec = data[i];
 				var tag = new Tag(rec.id, rec.name);
-				obj.push(tag);
+				_tags.push(tag);
 				tagList[rec.id] = tag;
 			}
-			self.tags(obj);
+			self.tags(_tags);
 		});
 	};
 
 	self.getProjects = function() {
 		jQuery.get('http://astr.nsur.org/wp-json/wp/v2/project', null, function(data) {
-			var obj = [];
+			var _projects = [];
 			for(var i = 0; i < data.length; i++) {
 				var rec = data[i];
 				var projectTags = [];
@@ -76,9 +52,9 @@ function StartViewModel() {
 				}
 				var displayHeight = 39 + 24 * (Math.ceil(projectTags.length / 6));
 				var project = new Project(rec.id, rec.acf.display_name, projectTags, rec.acf.feature_image, null, displayHeight);
-				obj.push(project);
+				_projects.push(project);
 			}
-			self.projects(obj);
+			self.projects(_projects);
 		});
 	};
 
