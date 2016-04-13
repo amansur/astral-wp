@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 <div id="nav">
 	<ul class="menu">
-		<li class="menuItem"><a href="#work">Work</a></li>
-		<li class="menuItem"><a href="#about">About</a></li>
+		<a href="#work"><li>Work</li></a>
+		<a href="#about"><li>About</li></a>
 	</ul>
 </div>
 

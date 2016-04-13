@@ -15,3 +15,5 @@ ko.applyBindings(StartViewModel(), document.getElementById('main'));
 // // start pager.js
 // // pager.start();
 // pager.startHistoryJs();
+
+jQuery('.project').on('mouseleave', function() { jQuery('.projectImage').show();});

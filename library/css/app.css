@@ -80,7 +80,7 @@ h1 {
   border-top: 2px solid white;
 }
 
-#nav .menu .menuItem {
+#nav .menu a {
   background-color: black;
   -webkit-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -93,15 +93,13 @@ h1 {
   font-size: 24px;
   padding: 10px;
   vertical-align: middle;
-}
-#nav .menu .menuItem a {
   color: white;
   font-weight: bold;
 }
-#nav .menu .menuItem a:hover {
+#nav .menu a:hover {
   text-decoration: none;
 }
-#nav .menu .menuItem:nth-child(2) {
+#nav .menu a:nth-child(2) {
   top: 315px;
 }
 

@@ -99,9 +99,8 @@ h1 {
 
 #nav {
 	.menu {
-		.menuItem {
-
-			background-color:black;
+		a {
+			background-color: black;
 
 			-webkit-transform: rotate(-90deg);
 		    -ms-transform: rotate(-90deg);
@@ -116,17 +115,15 @@ h1 {
 		    padding: 10px;
 		    vertical-align: middle;
 
-		    a {
-		    	color: white;
-		    	font-weight: bold;
-		    }
-
-		    a:hover {
-		    	text-decoration: none;
-		    }
+	    	color: white;
+	    	font-weight: bold;   
 		}
 
-		.menuItem:nth-child(2) {
+		a:hover {
+	    	text-decoration: none;
+	    }
+
+		a:nth-child(2) {
 			top: 315px;
 		}
 	}
