@@ -53,18 +53,6 @@
 			</section> 							<!-- END #about -->
 		</main> 									<!-- END #main -->
 
-		<main id="project" class="m-all t-2of3 d-7of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-			<!-- <div data-bind="page: {id: 'start', title: 'Astral Studio'}"> -->
-				<section id="intro"> <!-- BEGIN #intro -->
-					<h1 data-bind="html: introText"></h1>
-				</section> <!-- END #intro -->
-			<!-- </div> -->
-
-			<!-- <div data-bind="page: {id: 'project', params: ['id'], title: 'Astral Studio'}">
-
-			</div> -->
-		</main> <!-- END #main -->
-
 	</div> <!-- END #inner-content -->
 
 </div> <!-- END #content -->
