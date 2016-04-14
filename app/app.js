@@ -16,4 +16,6 @@ ko.applyBindings(vm, document.getElementById('main'));
 // // pager.start();
 // pager.startHistoryJs();
 
-jQuery('.project').on('mouseleave', function() { jQuery('.projectImage').hide();});
+$projectImage = jQuery('.projectImage');
+jQuery('.project').on('mouseleave', function() { $projectImage.hide();});
+$projectImage.on('mouseleave', function() { $projectImage.hide();});
