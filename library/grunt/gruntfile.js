@@ -104,7 +104,8 @@ module.exports = function(grunt) {
 					'../../app/Model.Media.js',
 					'../../app/Model.Project.js',
 					'../../app/Model.Tag.js',
-					'../../app/app.js'
+					'../../app/app.js',
+					'../../app/functions.js'
 				],
 				tasks: [
 					'jshint',

@@ -1,8 +1,7 @@
 // pager.extendWithPage(StartViewModel);
-// ko.applyBindings(IntroViewModel(), document.getElementById('intro'));
 var vm = StartViewModel();
 ko.applyBindings(vm, document.getElementById('main'));
-// pager.start();
+// pager.start(); var foo = 4;
 
 
 // use HTML5 history
