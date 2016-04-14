@@ -77,7 +77,11 @@ function StartViewModel() {
 			project.featureMediaUrl(self.visibleImageUrl());
 			setTimeout(function() { project.showImage(true)}, 100);
 		}
-		jQuery('.projectImage').css('position', 'absolute').css('top', event.pageY + 40).css('left', event.pageX);
+
+		jQuery('.projectImage').css({
+				'position' : 'absolute',
+				'top' : event.pageY + 40,
+				'left' : event.pageX - 10 });
 	};
 	
 	self.hideFeaturedImage = function(project) {
