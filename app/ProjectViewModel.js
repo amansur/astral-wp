@@ -19,7 +19,8 @@ function ProjectViewModel() {
 					jQuery.ajax({
 						url:'/wp-json/wp/v2/media/'+media.image, 
 						success: function(data) {
-							_image = data.media_details.sizes.large.source_url;
+							console.log(data);
+							_image = data.media_details.sizes.full.source_url;
 						},
 						async: false});
 
