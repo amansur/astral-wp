@@ -259,19 +259,20 @@ h1 {
 		}
 		.projectInvolvement {
 			font-family: "Courier";		
+
 			.projectTags {
 				margin: 0;
 				text-transform: capitalize;
+				overflow: hidden;
 
 				.projectTag {
 					display: inline-block;
+					float: left;
 				}
 
 				.projectTag ~ .projectTag:before {
 					content: '\25a0';
-					position: relative;
-					bottom: 0px;
-					left: -4px;
+					margin: 0 6px;
 				}
 			}
 		}

@@ -223,15 +223,15 @@ h1 {
 #project .project .projectInvolvement .projectTags {
   margin: 0;
   text-transform: capitalize;
+  overflow: hidden;
 }
 #project .project .projectInvolvement .projectTags .projectTag {
   display: inline-block;
+  float: left;
 }
 #project .project .projectInvolvement .projectTags .projectTag ~ .projectTag:before {
   content: '\25a0';
-  position: relative;
-  bottom: 0px;
-  left: -4px;
+  margin: 0 6px;
 }
 #project .project .projectDescription {
   font-family: "Courier";

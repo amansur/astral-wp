@@ -58,7 +58,9 @@
 						<div class="col-sm-6 project">
 							<h1 class="projectName" data-bind="text: name"></h1>
 							<div class="projectInvolvement">
-								Involvement ->
+								<!-- ko if: $data.tags !== undefined -->
+								Involvement ➔
+								<!-- /ko -->
 								<ol class="projectTags" data-bind="foreach: tags">
 									<li class="projectTag" data-bind="text: name"></li>
 								</ol>
