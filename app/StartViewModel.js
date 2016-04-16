@@ -78,8 +78,8 @@ function StartViewModel() {
 
 		jQuery('.projectImage').css({
 				'position' : 'absolute',
-				'top' : event.pageY - 70,
-				'left' : event.pageX - 30});
+				'top' : event.pageY - (150/project.tags.length),
+				'left' : event.pageX - 180});
 	};
 	
 	self.hideFeaturedImage = function(project) {
