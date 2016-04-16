@@ -19,7 +19,7 @@ function ProjectViewModel() {
 					jQuery.ajax({
 						url:'/wp-json/wp/v2/media/'+media.image, 
 						success: function(data) {
-							_image = data.media_details.sizes.medium.source_url;
+							_image = data.media_details.sizes.large.source_url;
 						},
 						async: false});
 
