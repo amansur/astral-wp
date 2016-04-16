@@ -60,5 +60,5 @@ function showHome(anchor) {
 	projectVM.slug(null);
 };
 
-if (window.location.hash === undefined)
+if (window.location.hash === undefined || window.location.hash === "")
 	showHome();
