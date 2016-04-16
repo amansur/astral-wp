@@ -161,6 +161,7 @@ h1 {
 @media (max-width: 767px) {
   #nav {
     margin-top: 75px;
+    margin-bottom: 125px;
   }
 }
 #nav .menu {
@@ -169,7 +170,7 @@ h1 {
   z-index: 5;
   margin: 0;
 }
-#nav .menu li {
+#nav .menu .menuItem {
   background-color: black;
   text-decoration: none;
   color: white;
@@ -180,8 +181,12 @@ h1 {
   vertical-align: middle;
   cursor: pointer;
 }
+#nav .menu .menuItem a, #nav .menu .menuItem a:hover, #nav .menu .menuItem a:visited, #nav .menu .menuItem a:active {
+  text-decoration: none;
+  color: inherit;
+}
 @media (min-width: 768px) {
-  #nav .menu li {
+  #nav .menu .menuItem {
     -webkit-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
@@ -190,13 +195,9 @@ h1 {
     left: -35px;
     top: 175px;
   }
-  #nav .menu li:nth-child(2) {
+  #nav .menu .menuItem:nth-child(2) {
     top: 315px;
   }
-}
-#nav .menu a, #nav .menu a:hover, #nav .menu a:visited, #nav .menu a:active {
-  text-decoration: none;
-  color: white;
 }
 
 #footer {

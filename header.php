@@ -42,12 +42,12 @@
 
 			<nav id="nav" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 				<ul class="menu row list-unstyled">
-					<li class="col-xs-6">
+					<li class="col-xs-6 menuItem">
 						<a href="#/home/work">
 							Work
 						</a>
 					</li>
-					<li class="col-xs-6">
+					<li class="col-xs-6 menuItem">
 						<a href="#/home/about">
 							About
 						</a>

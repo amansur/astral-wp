@@ -186,6 +186,7 @@ h1 {
 @media (max-width: 767px) {
 	#nav {
 		margin-top: 75px;
+		margin-bottom: 125px;
 	}
 }
 #nav {
@@ -195,7 +196,7 @@ h1 {
 		z-index: 5;
 		margin: 0;
 
-		li {
+		.menuItem {
 			background-color: black;
 			text-decoration: none;
 			color: white;
@@ -205,10 +206,15 @@ h1 {
 		    padding: 10px;
 		    vertical-align: middle;
 		    cursor: pointer;
+
+		    a, a:hover, a:visited, a:active {
+	    		text-decoration: none;
+	    		color: inherit;
+	    	}
 		}
 
 		@media (min-width: 768px) {
-		    li {
+		    .menuItem {
 		    	-webkit-transform: rotate(-90deg);
 			    -ms-transform: rotate(-90deg);
 			    transform: rotate(-90deg);
@@ -219,15 +225,11 @@ h1 {
 			    top: 175px;
 		    }
 
-		    li:nth-child(2) {
+		    .menuItem:nth-child(2) {
 				top: 315px;
 			}
 		}
 
-		a, a:hover, a:visited, a:active {
-	    	text-decoration: none;
-	    	color: white;
-	    }	
 	}
 }
 

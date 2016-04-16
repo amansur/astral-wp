@@ -43,12 +43,14 @@ function scrollToAnchor(anchor) {
 
 function showProject(slug) { 
 	projectVM.slug(slug);
+	$menu.find('.menuItem:first-child').css({"background-color" : "white", "color" : "black"})
 	$projectNode.style.display = 'block';
 	$homeNode.style.display = 'none';
 };
 
 function showHome(anchor) {
 	window.location.hash = '/home';
+	$menu.find('.menuItem:first-child').css({"background-color" : "black", "color" : "white"})
 	$projectNode.style.display = 'none';
 	$homeNode.style.display = 'block';
 
