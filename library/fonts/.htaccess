@@ -1,4 +1,4 @@
-SetEnvIf Referer 192\.168\.99\.100 localreferer
+SetEnvIf Referer nsur\.org localreferer
 
 <FilesMatch \.(eot|woff|woff2|ttf|svg)$>
 Order deny,allow
