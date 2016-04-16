@@ -6,11 +6,17 @@ Author:
 Stylesheet: Knockout Application Stylesheet
 
 ******************************************************************/
+@font-face {
+  font-family: 'Basis';
+  src: url("/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.eot");
+  src: url("/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.eot?#iefix") format("embedded-opentype"), url("/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.woff") format("woff"), url("/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.ttf") format("truetype"), url("/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.svg#webfont") format("svg");
+}
 body {
   background-image: url("/wp-content/themes/astral-wp/library/images/background.jpg");
   background-attachment: fixed;
   background-size: cover;
   color: white !important;
+  font-family: 'Basis' !important;
 }
 
 h1 {
