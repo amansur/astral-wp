@@ -101,10 +101,12 @@ module.exports = function(grunt) {
 				files: [
 					'<%= jshint.all %>',
 					'../../app/StartViewModel.js',
+					'../../app/ProjectViewModel.js',
 					'../../app/Model.Media.js',
 					'../../app/Model.Project.js',
 					'../../app/Model.Tag.js',
 					'../../app/app.js',
+					'../../app/Route.js',
 					'../../app/functions.js'
 				],
 				tasks: [

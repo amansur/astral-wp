@@ -6,7 +6,6 @@ function SplitArrayIntoN(array, n) {
 	for(i = 0, j = array.length; i < j; i+=chunk) {
 		if (i != 0) chunk = smallChunk;
 		result.push(array.slice(i, i + chunk));
-		//i += chunk;
 	}
 
 	return result;

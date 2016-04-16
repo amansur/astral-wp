@@ -1,15 +1,14 @@
 function StartViewModel() {
-	var columnCount = 3;
-	var tagList = {};
-	var self = this;
+	var columnCount 		= 3;
+	var self 				= this;
 	
-	self.visibleImageUrl 	= ko.observable();
+	self.tags 				= ko.observableArray();
+	self.projects 			= ko.observableArray();
 	self.introText 			= ko.observable();
 	self.footer 			= ko.observableArray();
-	self.projects 			= ko.observableArray();
-	self.tags 				= ko.observableArray();
 	self.selectedTags 		= ko.observableArray();
-
+	self.visibleImageUrl 	= ko.observable();
+	
 	self.getSelectedProjects = function() {
 		if (!self.selectedTags() || self.selectedTags().length === 0) {
 			return SplitArrayIntoN(self.projects(), columnCount);
@@ -26,8 +25,8 @@ function StartViewModel() {
 		}
 	};
 
-	self.selectedProjects = ko.computed(getSelectedProjects);	
-	
+	self.selectedProjects = ko.computed(self.getSelectedProjects);	
+
 	self.getTags = function() {
 		jQuery.get('/wp-json/wp/v2/project_tag', null, function(data) {
 			var _tags = jQuery.map(data, function(item) {
@@ -38,20 +37,20 @@ function StartViewModel() {
 		});
 	};
 
-	self.getProjects = function() {
-		jQuery.get('http://astr.nsur.org/wp-json/wp/v2/project', null, function(data) {
+	self.getProjects = function(allTags) {
+		jQuery.get('//astr.nsur.org/wp-json/wp/v2/project?per_page=99', null, function(data) {
 			var _projects = jQuery.map(data, function (project) {
 				var _projectTags = jQuery.map(project.project_tag, function(tag) {
-					return tagList[tag];
+					return allTags[tag];
 				});
-				return new Project(project.id, project.acf.display_name, _projectTags, project.acf.feature_image, null);
+				return new Project(project.id, project.slug, project.acf.display_name, null, _projectTags, project.acf.feature_image, null);
 			});
 			self.projects(_projects);
 		});
 	};
 
 	self.getConfig = function() {
-		jQuery.get('http://astr.nsur.org/wp-json/wp/v2/config/174', null, function(data) { //174 astr 173 local
+		jQuery.get('/wp-json/wp/v2/config/174', null, function(data) { //174 astr 173 local
 			self.introText(data.acf.heading);
 			var columns = jQuery.map(data.acf.footer, function(column) {
 				var populatedColumn = [];
@@ -75,21 +74,20 @@ function StartViewModel() {
 		if (project.featureMedia != null && project.featureMedia != 0) {
 			self.getImage(project.featureMedia);
 			project.featureMediaUrl(self.visibleImageUrl());
-			setTimeout(function() { project.showImage(true)}, 100);
 		}
 
 		jQuery('.projectImage').css({
 				'position' : 'absolute',
-				'top' : event.pageY + 40,
-				'left' : event.pageX - 10 });
+				'top' : event.pageY - 70,
+				'left' : event.pageX - 30});
 	};
 	
 	self.hideFeaturedImage = function(project) {
-		project.showImage(false);
 		self.visibleImageUrl(null);
 	};
 
 	self.getTags();
-	self.getProjects();
+	self.getProjects(tagList);
 	self.getConfig();
+
 };

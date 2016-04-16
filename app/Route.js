@@ -1,10 +1,12 @@
-// var router = new Grapnel({ pushState : true });
+var router = Router({
+	'/project': {
+		'/:slug': { on: showProject },
+	},
+	'/home': {
+		'/:anchor': { on: showHome }
+	},
+	'/home': showHome
+});
 
-// router.get('projects/:id?', function(req){
-//     var id = req.params.id;
-//     ko.applyBindings(ProjectViewModel(id), document.getElementById('project'));
-// });
-
-// router.get('start', function(req){
-// 	ko.applyBindings(StartViewModel(), document.getElementById('main'));
-// });
+router.configure();
+router.init();
