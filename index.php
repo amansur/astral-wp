@@ -55,20 +55,28 @@
 				
 				<section id="project">
 					<div class="row" data-bind="with: project">
-						<div class="col-sm-6">
-							<span data-bind="text: $data.name"></span>
-							<span data-bind="html: $data.description"></span>
+						<div class="col-sm-6 project">
+							<h1 class="projectName" data-bind="text: name"></h1>
+							<div class="projectInvolvement">
+								Involvement ->
+								<ol class="projectTags" data-bind="foreach: tags">
+									<li class="projectTag" data-bind="text: name"></li>
+								</ol>
+							</div>
+							<div class="projectDescription" data-bind="html: description"></div>
 						</div>
 						<div class="col-sm-6">
 							<ul class="media" data-bind="foreach: media">
 								<!-- ko if: type == "video" -->
 								<li class="mediaVideo">
 									<span data-bind="html: content"></span>
+									<span data-bind="html: description"></span>
 								</li>
 								<!-- /ko -->
 								<!--ko if: type == "picture" -->
 								<li class="mediaPicture">
 									<img data-bind="attr: {src: content}" />
+									<span data-bind="html: description"></span>
 								</li>
 								<!-- /ko -->
 							</ul>

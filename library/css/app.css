@@ -34,8 +34,8 @@ h1 {
 }
 .header .topAnchor {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  bottom: 15px;
+  right: 15px;
   width: 75px;
   height: 75px;
   padding: 10px;
@@ -126,6 +126,7 @@ h1 {
 }
 #work .projects .project .projectTags {
   margin: 0;
+  text-transform: capitalize;
 }
 #work .projects .project .projectTags .projectTag {
   display: inline-block;
@@ -134,7 +135,8 @@ h1 {
 #work .projects .project .projectTags .projectTag ~ .projectTag:before {
   content: '\25a0';
   position: relative;
-  bottom: 2px;
+  bottom: 0px;
+  left: 2px;
 }
 #work .projectImage {
   position: absolute;
@@ -204,6 +206,28 @@ h1 {
 #project iframe {
   width: 100%;
   height: auto;
+}
+#project .project .projectName {
+  font-size: 20px !important;
+}
+#project .project .projectInvolvement {
+  font-family: "Courier";
+}
+#project .project .projectInvolvement .projectTags {
+  margin: 0;
+  text-transform: capitalize;
+}
+#project .project .projectInvolvement .projectTags .projectTag {
+  display: inline-block;
+}
+#project .project .projectInvolvement .projectTags .projectTag ~ .projectTag:before {
+  content: '\25a0';
+  position: relative;
+  bottom: 0px;
+  left: -4px;
+}
+#project .project .projectDescription {
+  font-family: "Courier";
 }
 #project .media li {
   margin: 5px auto;

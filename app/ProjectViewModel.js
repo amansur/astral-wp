@@ -3,8 +3,10 @@ function ProjectViewModel() {
 	self.slug 	= ko.observable();
 	self.project = ko.observable();
 	self.getProject = ko.computed(function() {
-		if (self.slug() === undefined)
+		if (self.slug() === undefined || self.slug() === null || self.slug() === "")	{		
+			self.project(new Project());
 			return false;
+		}
 
 		jQuery.get('/wp-json/wp/v2/project/?slug=' + self.slug(), null, function(data) {
 			data = data[0]; // retrieving by slug returns array
@@ -28,7 +30,6 @@ function ProjectViewModel() {
 				}
 			});
 			var _project = new Project(data.id, data.slug, data.acf.display_name, data.acf.description, _projectTags, null, _media);
-			console.log(_project);
 			self.project(_project);
 		});
 	});

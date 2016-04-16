@@ -55,6 +55,7 @@ function showHome(anchor) {
 	if (anchor !== undefined) {
 		scrollToAnchor(anchor);
 	}
+	projectVM.slug(null);
 };
 
 if (window.location.hash === undefined)

@@ -36,8 +36,8 @@ h1 {
 
 	.topAnchor {
 		position: fixed;
-		bottom: 10px;
-		right: 10px;
+		bottom: 15px;
+		right: 15px;
 		width: 75px;
 		height: 75px;
 		padding: 10px;
@@ -142,6 +142,7 @@ h1 {
 
 			.projectTags {
 				margin: 0;
+				text-transform: capitalize;
 
 				.projectTag {
 					display: inline-block;
@@ -151,7 +152,8 @@ h1 {
 				.projectTag ~ .projectTag:before {
 					content: '\25a0';
 					position: relative;
-					bottom: 2px;
+					bottom: 0px;
+					left: 2px;
 				}
 			}
 		}
@@ -237,6 +239,33 @@ h1 {
 	iframe {
 		width: 100%; 
 		height: auto;
+	}
+
+	.project {
+		.projectName {
+			font-size: 20px !important;
+		}
+		.projectInvolvement {
+			font-family: "Courier";		
+			.projectTags {
+				margin: 0;
+				text-transform: capitalize;
+
+				.projectTag {
+					display: inline-block;
+				}
+
+				.projectTag ~ .projectTag:before {
+					content: '\25a0';
+					position: relative;
+					bottom: 0px;
+					left: -4px;
+				}
+			}
+		}
+		.projectDescription {
+			font-family: "Courier";
+		}
 	}
 
 	.media {
