@@ -18,7 +18,7 @@ class AstralController extends WP_REST_Controller {
                 ),
             ),
         ) );
-        register_rest_route( $namespace, '/' . $base . '/(?P<id>[\d]+)', array(
+        register_rest_route( $namespace, '/' . $base . '/(?P<slug>[\w-]+)', array(
             array(
                 'methods'         => WP_REST_Server::READABLE,
                 'callback'        => array( $this, 'get_item' ),
@@ -62,21 +62,6 @@ class AstralController extends WP_REST_Controller {
 		 */
 		$args = apply_filters( "rest_{$postType}_query", $args, $request );
 		$query_args = $this->prepare_items_query( $args, $request );
-
-		//$taxonomies = wp_list_filter( get_object_taxonomies( $postType, 'objects' ), array( 'show_in_rest' => true ) );
-		//foreach ( $taxonomies as $taxonomy ) {
-		//    $base = ! empty( $taxonomy->rest_base ) ? $taxonomy->rest_base : $taxonomy->name;
-
-		//    if ( ! empty( $request[ $base ] ) ) {
-		//        $query_args['tax_query'][] = array(
-		//            'taxonomy'         => $taxonomy->name,
-		//            'field'            => 'term_id',
-		//            'terms'            => $request[ $base ],
-		//            'include_children' => false,
-		//        );
-		//    }
-		//}
-
 		$posts_query = new WP_Query();
 		$query_result = $posts_query->query( $query_args );
 
@@ -86,49 +71,11 @@ class AstralController extends WP_REST_Controller {
 				continue;
 			}
 
-			$data = $this->prepare_item_for_response( $post, $request );
+			$data = $this->prepare_items_for_response( $post, $request );
 			$posts[] = $this->prepare_response_for_collection( $data );
 		}
 
-		$page = (int) $query_args['paged'];
-		$total_posts = $posts_query->found_posts;
-
-		if ( $total_posts < 1 ) {
-			// Out-of-bounds, run the query again without LIMIT for total count
-			unset( $query_args['paged'] );
-			$count_query = new WP_Query();
-			$count_query->query( $query_args );
-			$total_posts = $count_query->found_posts;
-		}
-
-		$max_pages = ceil( $total_posts / (int) $query_args['posts_per_page'] );
-
 		$response = rest_ensure_response( $posts );
-		$response->header( 'X-WP-Total', (int) $total_posts );
-		$response->header( 'X-WP-TotalPages', (int) $max_pages );
-
-		$request_params = $request->get_query_params();
-		if ( ! empty( $request_params['filter'] ) ) {
-			// Normalize the pagination params.
-			unset( $request_params['filter']['posts_per_page'] );
-			unset( $request_params['filter']['paged'] );
-		}
-		$base = add_query_arg( $request_params, rest_url( sprintf( '/%s/%s', $this->namespace, $this->rest_base ) ) );
-
-		if ( $page > 1 ) {
-			$prev_page = $page - 1;
-			if ( $prev_page > $max_pages ) {
-				$prev_page = $max_pages;
-			}
-			$prev_link = add_query_arg( 'page', $prev_page, $base );
-			$response->link_header( 'prev', $prev_link );
-		}
-		if ( $max_pages > $page ) {
-			$next_page = $page + 1;
-			$next_link = add_query_arg( 'page', $next_page, $base );
-			$response->link_header( 'next', $next_link );
-		}
-
 		return $response;
     }
 
@@ -139,17 +86,23 @@ class AstralController extends WP_REST_Controller {
 	 * @return WP_Error|WP_REST_Response
 	 */
     public function get_item( $request ) {
-        //get parameters from request
-        $params = $request->get_params();
-        $item = array();//do a query, call another class, etc
-        $data = $this->prepare_item_for_response( $item, $request );
+		$postType			= 'project';
+		$args				= array();
+		$args['name']			= $request['slug'];
+		$args['post_type']	= $postType;
 
-        //return a response or error based on some conditional
-        if ( 1 == 1 ) {
-            return new WP_REST_Response( $data, 200 );
-        }else{
-            return new WP_Error( 'code', __( 'message', 'text-domain' ) );
-        }
+		$query_args = $this->prepare_items_query( $args, $request );
+		$posts_query = new WP_Query();
+		$query_result = $posts_query->query( $query_args );
+
+		$item;
+		foreach($query_result as $post) {
+			$item = $this->prepare_item_for_response($post, $request);
+		}
+
+		$response = rest_ensure_response($item);
+
+		return $response;
     }
 
 	/**
@@ -328,24 +281,10 @@ class AstralController extends WP_REST_Controller {
 	 * @param WP_REST_Request $request Request object.
 	 * @return mixed
 	 */
-    public function prepare_item_for_response( $item, $request ) {
+    public function prepare_items_for_response( $item, $request ) {
 		$fields = array();
 		foreach(get_fields($item->ID) as $key => $value) {
-			if($key == "media") {
-				$media = array();
-				foreach($value as $mediaItem) {
-					$media["type"] = $mediaItem["acf_fc_layout"];
-					$media["description"] = $mediaItem["image_description"];
-					if($mediaItem["acf_fc_layout"] == "picture") {
-						$media["content"] = wp_get_attachment_image_src($mediaItem["image"], "full");
-					}
-					else {
-						$media["content"] = $mediaItem["image"];
-					}
-				}
-				$fields[$key] = $media;
-			}
-			elseif($key == "feature_image") {
+			if($key == "feature_image") {
 				$fields[$key] = wp_get_attachment_image_src($value);
 			}
 			else {
@@ -361,45 +300,70 @@ class AstralController extends WP_REST_Controller {
 			array_push($tags, $tag);
 		}
 
-		//return $fields;
 		$project = array();
 		$project["id"] = $item->ID;
+		//$project["createDate"] = $item->post_date;
+		//$project["description"] = $fields["description"];
+		//$project["media"] = (array)$fields["media"];
 		$project["slug"] = $item->post_name;
-		$project["createDate"] = $item->post_date;
 		$project["name"] = $fields["display_name"];
-		$project["description"] = $fields["description"];
 		$project["featureImage"] = $fields["feature_image"];
-		$project["media"] = (array)$fields["media"];
 		$project["tags"] = $tags;
 		return (object)$project;
     }
 
-	///**
-	// * Get the query params for collections
-	// *
-	// * @return array
-	// */
-	//public function get_collection_params() {
-	//    return array(
-	//        'page'                   => array(
-	//            'description'        => 'Current page of the collection.',
-	//            'type'               => 'integer',
-	//            'default'            => 1,
-	//            'sanitize_callback'  => 'absint',
-	//        ),
-	//        'per_page'               => array(
-	//            'description'        => 'Maximum number of items to be returned in result set.',
-	//            'type'               => 'integer',
-	//            'default'            => 10,
-	//            'sanitize_callback'  => 'absint',
-	//        ),
-	//        'search'                 => array(
-	//            'description'        => 'Limit results to those matching a string.',
-	//            'type'               => 'string',
-	//            'sanitize_callback'  => 'sanitize_text_field',
-	//        ),
-	//    );
-	//}
+	/**
+	 * Prepare the item for the REST response
+	 *
+	 * @param mixed $item WordPress representation of the item.
+	 * @param WP_REST_Request $request Request object.
+	 * @return mixed
+	 */
+    public function prepare_item_for_response( $item, $request ) {
+		//return $item;
+		$fields = array();
+		foreach(get_fields($item->ID) as $key => $value) {
+		    if($key == "media") {
+		        $mediaList = array();
+		        foreach($value as $mediaItem) {
+					$media = array();
+		            $media["type"] = $mediaItem["acf_fc_layout"];
+		            if($mediaItem["acf_fc_layout"] == "picture") {
+		                $media["content"] = wp_get_attachment_image_src($mediaItem["image"], "full")[0];
+						$media["description"] = $mediaItem["image_description"];
+		            }
+		            else {
+		                $media["content"] = $mediaItem["video_url"];
+						$media["description"] = $mediaItem["video_description"];
+		            }
+					array_push($mediaList, $media);
+		        }
+		        $fields[$key] = $mediaList;
+		    }
+		    else {
+		        $fields[$key] = $value;
+		    }
+		}
+
+		$tags = array();
+		foreach(get_the_terms($item->ID, "project_tag") as $key => $value) {
+		    $tag			= array();
+		    $tag["id"]		= $value->term_id;
+		    $tag["name"]	= $value->name;
+		    array_push($tags, $tag);
+		}
+
+		//$project["createDate"] = $item->post_date;
+		//$project["featureImage"] = $fields["feature_image"];
+		$project = array();
+		$project["id"] = $item->ID;
+		$project["slug"] = $item->post_name;
+		$project["name"] = $fields["display_name"];
+		$project["description"] = $fields["description"];
+		$project["media"] = (array)$fields["media"];
+		$project["tags"] = $tags;
+		return (object)$project;
+    }
 }
 
 add_action('rest_api_init', function() {

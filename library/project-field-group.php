@@ -95,7 +95,7 @@ register_field_group(array (
 							'key' => 'field_57019a901cff6',
 							'label' => 'Video URL',
 							'name' => 'video_url',
-							'type' => 'oembed',
+							'type' => 'url',
 							'instructions' => '',
 							'required' => 0,
 							'conditional_logic' => 0,

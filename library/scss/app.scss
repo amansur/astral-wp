@@ -7,6 +7,20 @@ Stylesheet: Knockout Application Stylesheet
 
 ******************************************************************/
 
+/*
+	0.0		Global
+	1.0		Navigation
+	2.0		Header
+	3.0		Content
+	4.0		Footer
+*/
+
+
+
+//	==================================================================
+//		0.0 Global
+//	==================================================================
+
 @font-face{ 
 	font-family: 'Basis';
 	src: url('/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.eot');
@@ -17,7 +31,7 @@ Stylesheet: Knockout Application Stylesheet
 }
 
 body {
-	background-image: url('/wp-content/themes/astral-wp/library/images/background.jpg');
+	background-image: url('/wp-content/themes/astral-wp/library/images/background/1.jpg');
 	background-attachment: fixed;
 	background-size: cover;
 	color: white !important;
@@ -27,6 +41,64 @@ body {
 h1 {
 	font-size: 3em !important;
 }
+
+
+//	==================================================================
+//		1.0 Navigation
+//	==================================================================
+
+#nav {
+	@media (max-width: 767px) {
+		margin-top: 75px;
+		margin-bottom: 125px;
+	}
+
+	.menu {
+		position: fixed;
+		width: 100%;
+		z-index: 5;
+		margin: 0;
+
+		.menuItem {
+			background-color: black;
+			text-decoration: none;
+			color: white;
+	    	font-weight: bold;  
+	    	text-align: center;
+		    font-size: 24px;
+		    padding: 10px;
+		    vertical-align: middle;
+		    cursor: pointer;
+
+		    a, a:hover, a:visited, a:active {
+	    		text-decoration: none;
+	    		color: inherit;
+	    	}
+		}
+
+		@media (min-width: 768px) {
+		    .menuItem {
+		    	-webkit-transform: rotate(-90deg);
+			    -ms-transform: rotate(-90deg);
+			    transform: rotate(-90deg);
+
+			    position: fixed;
+				width: 125px;
+			    left: -35px;
+			    top: 175px;
+		    }
+
+		    .menuItem:nth-child(2) {
+				top: 315px;
+			}
+		}
+
+	}
+}
+
+//	==================================================================
+//		2.0 Header
+//	==================================================================
 
 .header {
 	overflow: hidden;
@@ -71,14 +143,36 @@ h1 {
 	}
 }
 
-#content {
-	min-height: 400px;
-}
+//	==================================================================
+//		3.0 Content
+//	==================================================================
+
+
+//	===================================================================
+//			3.1 Project List View Model
+//	===================================================================
 
 #work {
-
 	h1 {
 		margin-top: 0;
+	}
+
+	#filterLabel {
+		font-family: Courier New, Courier, monospace;
+		text-decoration: underline;
+		text-align: right;
+		cursor: pointer;
+	}
+
+	#filterList {
+		display: none;
+	}
+
+	#filterApply {
+		font-family: Courier New, Courier, monospace;
+		text-decoration: underline;
+		cursor: pointer;
+		padding-top: 25px;
 	}
 
 	.tags {
@@ -116,7 +210,8 @@ h1 {
 				cursor: pointer;
 			}
 
-			input[type=checkbox].css-checkbox:checked + label.css-label {
+			input[type=checkbox].css-checkbox:checked + label.css-label, 
+			input[type=checkbox].css-checkbox:hover + label.css-label {
 				background-position: 0 0px;
 			}
 
@@ -179,6 +274,11 @@ h1 {
 	}
 }
 
+
+//	===================================================================
+//			3.2 Front page, top and bottom
+//	===================================================================
+
 #about {
 	h1 {
 		margin-top: 0;
@@ -193,64 +293,18 @@ h1 {
 	border-top: 2px solid white;
 }
 
-@media (max-width: 767px) {
-	#nav {
-		margin-top: 75px;
-		margin-bottom: 125px;
-	}
-}
-#nav {
-	.menu {
-		position: fixed;
-		width: 100%;
-		z-index: 5;
-		margin: 0;
 
-		.menuItem {
-			background-color: black;
-			text-decoration: none;
-			color: white;
-	    	font-weight: bold;  
-	    	text-align: center;
-		    font-size: 24px;
-		    padding: 10px;
-		    vertical-align: middle;
-		    cursor: pointer;
-
-		    a, a:hover, a:visited, a:active {
-	    		text-decoration: none;
-	    		color: inherit;
-	    	}
-		}
-
-		@media (min-width: 768px) {
-		    .menuItem {
-		    	-webkit-transform: rotate(-90deg);
-			    -ms-transform: rotate(-90deg);
-			    transform: rotate(-90deg);
-
-			    position: fixed;
-				width: 125px;
-			    left: -35px;
-			    top: 175px;
-		    }
-
-		    .menuItem:nth-child(2) {
-				top: 315px;
-			}
-		}
-
-	}
-}
-
-#footer {
-	background-color: black;
-}
+//	===================================================================
+//			3.3 Project View Model
+//	===================================================================
 
 #project {
-	iframe {
-		width: 100%; 
-		height: auto;
+
+	.projectNav {
+		a, a:hover, a:visited, a:active {
+	    	text-decoration: none;
+	    	color: inherit;
+		}
 	}
 
 	.project {
@@ -260,7 +314,7 @@ h1 {
 		.projectInvolvement {
 			font-family: "Courier";		
 
-			.projectTags {
+			/*.projectTags {
 				margin: 0;
 				text-transform: capitalize;
 				overflow: hidden;
@@ -274,7 +328,25 @@ h1 {
 					content: '\25a0';
 					margin: 0 6px;
 				}
+			}*/
+
+			.projectTags {
+				margin: 0;
+				text-transform: capitalize;
+
+				.projectTag {
+					display: inline-block;
+					font-family: "Courier";
+				}
+
+				.projectTag ~ .projectTag:before {
+					content: '\25a0';
+					position: relative;
+					bottom: 0px;
+					left: 2px;
+				}
 			}
+
 		}
 		.projectDescription {
 			font-family: "Courier";
@@ -293,4 +365,13 @@ h1 {
 
 	}
 	
+}
+
+
+//	==================================================================
+//		4.0 Footer
+//	==================================================================
+
+#footer {
+	background-color: black;
 }

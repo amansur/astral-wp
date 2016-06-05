@@ -55,7 +55,7 @@
 				</ul>
 			</nav>
 
-			<div class="topAnchor">
+			<div class="topAnchor" style="display: none;">
 				<span>Back to top</span>
 			</div>
 

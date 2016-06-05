@@ -1,12 +1,22 @@
 var router = Router({
 	'/project': {
-		'/:slug': { on: showProject },
+		'/:slug': {
+			on: function (slug) {
+				RouteProject(slug)
+			}
+		},
 	},
 	'/home': {
-		'/:anchor': { on: showHome }
+		'/:anchor': {
+			on: function (anchor) {
+				RouteHomeToAnchor(anchor);
+			}
+		}
 	},
-	'/home': showHome
-});
+	'/home': function () {
+			RouteHome();
+		}
+	});
 
 router.configure();
 router.init();

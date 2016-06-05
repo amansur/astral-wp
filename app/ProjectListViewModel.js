@@ -1,0 +1,48 @@
+/// <reference path="../bower_components/jquery/dist/jquery.js" />
+/// <reference path="../bower_components/knockout/dist/knockout.debug.js" />
+/// <reference path="Model.Project.js" />
+/// <reference path="Model.Tag.js" />
+function ProjectListViewModel(parent) {
+	var columnCount = 3;
+	var self = this;
+	self.projects = ko.observableArray();
+	self.projectLookup = ko.observableArray();
+	self.selectedProjects = ko.observableArray();
+
+	jQuery.getJSON(serviceRoot + '/astral/v1/project', null, function (data) {
+		self.projects(jQuery.map(data, function (item, i) {
+			var _tags = jQuery.map(item.tags, function (_tag) {
+				return parent.tagListVM.tagLookup[_tag.id];
+			})
+			self.projectLookup.push(item.slug);
+			return new Project(item.id, item.slug, item.name, null, _tags, item.featureMedia, null);
+		}));
+
+		self.updateSelectedProjectList();
+	});
+
+	self.updateSelectedProjectList = function () {
+		if (!parent.tagListVM.selectedTags() || parent.tagListVM.selectedTags().length === 0) {
+			self.projectLookup([]);
+			self.projects().forEach(function (ele, ind) {
+				self.projectLookup.push(ele.slug);
+			});
+			self.selectedProjects(SplitArrayIntoN(self.projects(), columnCount));
+		} else {
+			self.projectLookup([]);
+			var filteredProjects = ko.utils.arrayFilter(self.projects(), function (project) {
+				var show = false;
+
+				project.tags.forEach(function (projectTag) {
+					if (parent.tagListVM.selectedTags().indexOf(projectTag) !== -1) {
+						self.projectLookup.push(project.slug);
+						show = true;
+					}
+				});
+
+				return show;
+			});
+			self.selectedProjects(SplitArrayIntoN(filteredProjects, columnCount));
+		}
+	};
+}

@@ -1,5 +1,15 @@
 <?php get_header(); ?>
 
+
+<?php
+$frontPageContent = get_fields(174);
+?>
+		<script type="text/html" id="tags-template">
+			<li class="projectTag">
+				<span data-bind="text: name"></span>
+			</li>
+		</script>
+
 		<div id="content" class="container">
 		<div class="row">
 		<div class="col-sm-offset-1 col-sm-10">
@@ -9,69 +19,100 @@
 				<section id="home">
 					<div id="intro"> 				<!-- BEGIN #intro -->
 						<div class="row"> 
-							<h1 class="col-sm-12" data-bind="html: introText"></h1>
+							<h1 class="col-sm-12"><?php echo $frontPageContent["heading"]?></h1>
 						</div>
 					</div> 							<!-- END #intro -->
 					<div id="work"> 				<!-- BEGIN #work -->
 						<div class="row">
-							<h1 class="col-sm-12">Our Work</h1>
+							<h1 class="col-sm-9">Our Work</h1>
+							<span class="col-sm-3" id="filterLabel">filter work by type</span>
 						</div>
-						<div class="row">
+						<div class="row" data-bind="with: tagListVM" id="filterList">
 							<ul class="col-sm-12 tags" data-bind="foreach: tags">
 								<li class="tag">
 									<input class="css-checkbox" type="checkbox" data-bind="checkedValue: $data, checked: $parent.selectedTags, attr: {id: 'tag' + id}" />
 									<label class="css-label" data-bind="text: name, attr: {for: 'tag' + id}"></label>
 								</li>
 							</ul>
+							<span class="col-sm-12" id="filterApply">apply</span>
 						</div>
-						<ul class="row projects" data-bind="foreach: selectedProjects">
-							<div class="col-sm-4" data-bind="foreach: $data">
-								<li class="project">
-									<a class="projectLink" data-bind="attr: {href: '#/project/' + slug}">
-										<span class="projectName" data-bind="text: name, event: {mouseenter: $root.showFeaturedImage, mouseleave: $root.hideFeaturedImage}"></span>
-									</a>
-									<ol class="projectTags" data-bind="foreach: tags">
-										<li class="projectTag"> 
-											<span data-bind="text: name"></span>
-										</li>
-									</ol>
-								</li>
-							</div>
-						</ul>
-						<span class="projectImage" data-bind="visible: visibleImageUrl() != null"><img data-bind="attr: {src: visibleImageUrl()}" /></span>
+						<div class="row" data-bind="with: projectListVM">
+							<ul class="projects" data-bind="foreach: selectedProjects">
+								<div class="col-sm-4" data-bind="foreach: $data">
+									<li class="project">
+										<a class="projectLink" data-bind="attr: {href: '#/project/' + slug}">
+											<span class="projectName" data-bind="text: name, event: {mouseenter: $root.showFeaturedImage, mouseleave: $root.hideFeaturedImage}"></span>
+										</a>
+										<ol class="projectTags" data-bind="template: {name: 'tags-template', foreach: tags }"></ol>
+										<!--<div class="projectImage">
+											<img data-bind="attr: {src: }" />
+										</div>-->
+									</li>
+								</div>
+							</ul>
+						</div>
+                        <span class="projectImage" data-bind="visible: visibleImageURL() != null"><img data-bind="attr: {src: visibleImageURL}" /></span>
 					</div> 							<!-- END #work -->
 					<div id="about"> 				<!-- BEGIN #about -->
 						<div class="row">
 							<h1 class="col-sm-12">About Us</h1>
 						</div>
-						<div class="row" data-bind="foreach: footer">
-							<div class="col-sm-4" data-bind="foreach: $data">
-								<h2 data-bind="text: heading"></h2>
-								<span data-bind="html: content"></span>
+						<div class="row">
+							<?php
+							foreach($frontPageContent["footer"] as $column)	{
+							?>
+							<div class="col-sm-4">
+								<?php
+								foreach($column["column"] as $article) {
+								?>
+								<h2><?php echo $article["heading"];?></h2>
+								<span><?php echo $article["content"];?></span>
+								<?php
+								}
+								?>
 							</div>
+							<?php	
+							}
+							?>
+							
 						</div>
 					</div> 	
 				</section>							<!-- END #about -->
 				
-				<section id="project">
-					<div class="row" data-bind="with: project">
-						<div class="col-sm-6 project">
+				<section id="project" data-bind="with: projectVM">
+					<!-- ko if: prev !== null || next !== null -->
+					<div class="row">
+						<div class="col-sm-12 projectNav">
+							<!-- ko if: prev !== null -->
+							<a data-bind="attr: {href: '#/project/' + prev()}">&lt; prev</a>
+							<!-- /ko -->
+							<!-- ko if: next !== null -->
+							<a data-bind="attr: {href: '/#/project/' + next()}">next &gt;</a>
+							<!-- /ko -->
+						</div>
+					</div>
+					<!-- /ko -->
+					<!-- ko with: project -->
+					<div class="row">
+						<div class="col-sm-12 project">
 							<h1 class="projectName" data-bind="text: name"></h1>
 							<div class="projectInvolvement">
 								<!-- ko if: $data.tags !== undefined -->
 								Involvement ➔
 								<!-- /ko -->
-								<ol class="projectTags" data-bind="foreach: tags">
-									<li class="projectTag" data-bind="text: name"></li>
-								</ol>
+								<ol class="projectTags" data-bind="template: {name: 'tags-template', foreach: tags }"></ol>
 							</div>
 							<div class="projectDescription" data-bind="html: description"></div>
 						</div>
-						<div class="col-sm-6">
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
 							<ul class="media" data-bind="foreach: media">
 								<!-- ko if: type == "video" -->
 								<li class="mediaVideo">
-									<span data-bind="html: content"></span>
+									<div class="embed-responsive embed-responsive-16by9">
+										<iframe class="embed-responsive-item" data-bind="attr: {src: content}"></iframe>
+									</div>
 									<span data-bind="html: description"></span>
 								</li>
 								<!-- /ko -->
@@ -84,6 +125,7 @@
 							</ul>
 						</div>
 					</div>
+					<!-- /ko -->
 				</section>
 
 				</main>

@@ -1,36 +1,65 @@
-function ProjectViewModel() {
-	var self 	= this;
-	self.slug 	= ko.observable();
+/// <reference path="../bower_components/jquery/dist/jquery.js" />
+/// <reference path="../bower_components/knockout/dist/knockout.debug.js" />
+/// <reference path="Model.Project.js" />
+/// <reference path="Model.Media.js" />
+/// <reference path="Model.Tag.js" />
+/// <reference path="TagListViewModel.js" />
+/// <reference path="ProjectListViewModel.js" />
+
+
+function ProjectViewModel(parent) {
+	var self 			= this;
+	self.slug = ko.observable();
+	self.next = ko.observable();
+	self.prev = ko.observable();
 	self.project = ko.observable();
-	self.getProject = ko.computed(function() {
-		if (self.slug() === undefined || self.slug() === null || self.slug() === "")	{		
+
+	var i = 0;
+	ko.computed(function () {
+		//console.log(i++);
+		var projectLookup = parent.projectListVM.projectLookup();
+		var slug = self.slug();
+
+		if (projectLookup.length === 0) {
+			return false;
+		}
+
+		if (slug === undefined || slug === null) {
 			self.project(new Project());
 			return false;
 		}
 
-		jQuery.get('/wp-json/wp/v2/project/?slug=' + self.slug(), null, function(data) {
-			data = data[0]; // retrieving by slug returns array
-			var _projectTags = jQuery.map(data.project_tag, function(tag) { 
-				return tagList[tag]; 
+		jQuery.getJSON(serviceRoot + '/astral/v1/project/' + slug, null, function (data) {
+			var _projectTags = jQuery.map(data.tags, function (tag) {
+				return parent.tagListVM.tagLookup[tag.id];
 			});
-			var _media = jQuery.map(data.acf.media, function(media) {  
-				if (media.acf_fc_layout == "picture") {
-					var _image;
-					jQuery.ajax({
-						url:'/wp-json/wp/v2/media/'+media.image, 
-						success: function(data) {
-							_image = data.media_details.sizes.full.source_url;
-						},
-						async: false});
-
-					return new Media(_image, media.image_description, media.acf_fc_layout);
-				}
-				if (media.acf_fc_layout == "video") {
-					return new Media(media.video_url, media.video_description, media.acf_fc_layout);
-				}
+			var _projectMedia = jQuery.map(data.media, function (media) {
+				return new Media(media.content, media.description, media.type);
 			});
-			var _project = new Project(data.id, data.slug, data.acf.display_name, data.acf.description, _projectTags, null, _media);
+			_project = new Project(data.id, data.slug, data.name, data.description, _projectTags, null, _projectMedia);
 			self.project(_project);
+
+			var cur, next, prev;
+			projectLookup.forEach(function (ele, ind) {
+				if (ele === slug) {
+					cur = ind;
+				}
+			});
+			if (cur === 0) {
+				next = 1;
+				prev = projectLookup.length - 1;
+			} else if (cur === projectLookup.length - 1) {
+				next = 0;
+				prev = projectLookup.length - 2;
+			} else {
+				next = cur + 1;
+				prev = cur - 1;
+			}
+			self.next(projectLookup[next]);
+			self.prev(projectLookup[prev]);
 		});
+		
+		return false;
+
 	});
 };

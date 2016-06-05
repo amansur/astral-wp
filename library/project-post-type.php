@@ -55,6 +55,7 @@ function projectType() {
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			'show_in_rest' => true, /* enable in REST API */
+			//'rest_controller_class' => 'AstralController',
 			/* the next one is important, it tells what's enabled in the post editor */
 			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky')
 		) /* end of options */
@@ -117,7 +118,8 @@ function projectType() {
 			'show_admin_column' => true,
 			'show_ui' => true,
 			'query_var' => true,
-                        'show_in_rest' => true
+            'show_in_rest' => true,
+			//'rest_controller_class' => 'AstralController'
 		)
 	);
 	

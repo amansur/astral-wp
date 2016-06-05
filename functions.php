@@ -37,6 +37,7 @@ header("Pragma: no-cache");
     require_once( 'library/config-post-type.php' );
     require_once( 'library/project-field-group.php' );
     require_once( 'library/start-field-group.php' );
+	require_once( 'library/endpoint.php' );
 
   // launching operation cleanup
   add_action( 'init', 'astralweb_head_cleanup' );

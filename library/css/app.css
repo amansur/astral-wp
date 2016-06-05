@@ -6,13 +6,20 @@ Author:
 Stylesheet: Knockout Application Stylesheet
 
 ******************************************************************/
+/*
+	0.0		Global
+	1.0		Navigation
+	2.0		Header
+	3.0		Content
+	4.0		Footer
+*/
 @font-face {
   font-family: 'Basis';
   src: url("/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.eot");
   src: url("/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.eot?#iefix") format("embedded-opentype"), url("/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.woff") format("woff"), url("/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.ttf") format("truetype"), url("/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.svg#webfont") format("svg");
 }
 body {
-  background-image: url("/wp-content/themes/astral-wp/library/images/background.jpg");
+  background-image: url("/wp-content/themes/astral-wp/library/images/background/1.jpg");
   background-attachment: fixed;
   background-size: cover;
   color: white !important;
@@ -21,6 +28,48 @@ body {
 
 h1 {
   font-size: 3em !important;
+}
+
+@media (max-width: 767px) {
+  #nav {
+    margin-top: 75px;
+    margin-bottom: 125px;
+  }
+}
+#nav .menu {
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+  margin: 0;
+}
+#nav .menu .menuItem {
+  background-color: black;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 24px;
+  padding: 10px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+#nav .menu .menuItem a, #nav .menu .menuItem a:hover, #nav .menu .menuItem a:visited, #nav .menu .menuItem a:active {
+  text-decoration: none;
+  color: inherit;
+}
+@media (min-width: 768px) {
+  #nav .menu .menuItem {
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    position: fixed;
+    width: 125px;
+    left: -35px;
+    top: 175px;
+  }
+  #nav .menu .menuItem:nth-child(2) {
+    top: 315px;
+  }
 }
 
 .header {
@@ -62,12 +111,23 @@ h1 {
   float: right;
 }
 
-#content {
-  min-height: 400px;
-}
-
 #work h1 {
   margin-top: 0;
+}
+#work #filterLabel {
+  font-family: Courier New, Courier, monospace;
+  text-decoration: underline;
+  text-align: right;
+  cursor: pointer;
+}
+#work #filterList {
+  display: none;
+}
+#work #filterApply {
+  font-family: Courier New, Courier, monospace;
+  text-decoration: underline;
+  cursor: pointer;
+  padding-top: 25px;
 }
 #work .tags {
   display: flex;
@@ -102,7 +162,8 @@ h1 {
   vertical-align: middle;
   cursor: pointer;
 }
-#work .tags .tag input[type=checkbox].css-checkbox:checked + label.css-label {
+#work .tags .tag input[type=checkbox].css-checkbox:checked + label.css-label,
+#work .tags .tag input[type=checkbox].css-checkbox:hover + label.css-label {
   background-position: 0 0px;
 }
 #work .tags .tag label.css-label {
@@ -164,74 +225,44 @@ h1 {
   border-top: 2px solid white;
 }
 
-@media (max-width: 767px) {
-  #nav {
-    margin-top: 75px;
-    margin-bottom: 125px;
-  }
-}
-#nav .menu {
-  position: fixed;
-  width: 100%;
-  z-index: 5;
-  margin: 0;
-}
-#nav .menu .menuItem {
-  background-color: black;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  font-size: 24px;
-  padding: 10px;
-  vertical-align: middle;
-  cursor: pointer;
-}
-#nav .menu .menuItem a, #nav .menu .menuItem a:hover, #nav .menu .menuItem a:visited, #nav .menu .menuItem a:active {
+#project .projectNav a, #project .projectNav a:hover, #project .projectNav a:visited, #project .projectNav a:active {
   text-decoration: none;
   color: inherit;
-}
-@media (min-width: 768px) {
-  #nav .menu .menuItem {
-    -webkit-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-    position: fixed;
-    width: 125px;
-    left: -35px;
-    top: 175px;
-  }
-  #nav .menu .menuItem:nth-child(2) {
-    top: 315px;
-  }
-}
-
-#footer {
-  background-color: black;
-}
-
-#project iframe {
-  width: 100%;
-  height: auto;
 }
 #project .project .projectName {
   font-size: 20px !important;
 }
 #project .project .projectInvolvement {
   font-family: "Courier";
+  			/*.projectTags {
+  				margin: 0;
+  				text-transform: capitalize;
+  				overflow: hidden;
+  
+  				.projectTag {
+  					display: inline-block;
+  					float: left;
+  				}
+  
+  				.projectTag ~ .projectTag:before {
+  					content: '\25a0';
+  					margin: 0 6px;
+  				}
+  			}*/
 }
 #project .project .projectInvolvement .projectTags {
   margin: 0;
   text-transform: capitalize;
-  overflow: hidden;
 }
 #project .project .projectInvolvement .projectTags .projectTag {
   display: inline-block;
-  float: left;
+  font-family: "Courier";
 }
 #project .project .projectInvolvement .projectTags .projectTag ~ .projectTag:before {
   content: '\25a0';
-  margin: 0 6px;
+  position: relative;
+  bottom: 0px;
+  left: 2px;
 }
 #project .project .projectDescription {
   font-family: "Courier";
@@ -241,6 +272,10 @@ h1 {
 }
 #project .media .mediaPicture img {
   width: 100%;
+}
+
+#footer {
+  background-color: black;
 }
 
 /*# sourceMappingURL=app.css.map */

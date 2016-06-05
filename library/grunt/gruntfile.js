@@ -35,6 +35,9 @@ module.exports = function(grunt) {
 
 		// concat and minify our JS
 		uglify: {
+			options: {
+				beautify: true,
+			},
 			dist: {
 				files: {
 					'../js/scripts.min.js': [
@@ -42,13 +45,15 @@ module.exports = function(grunt) {
 					],
 					'../../app/app.min.js': [
 						'../../app/app.js',
+						'../../app/functions.js',
 						'../../app/Model.Project.js',
 						'../../app/Model.Tag.js',
 						'../../app/Model.Media.js',
-						'../../app/StartViewModel.js',
+						'../../app/TagListViewModel.js',
+						'../../app/ProjectListViewModel.js',
 						'../../app/ProjectViewModel.js',
-						'../../app/Route.js',
-						'../../app/functions.js'
+						'../../app/AppViewModel.js',
+						'../../app/Route.js'
 					]
 				}
 			}
@@ -100,8 +105,10 @@ module.exports = function(grunt) {
 			js: {
 				files: [
 					'<%= jshint.all %>',
-					'../../app/StartViewModel.js',
+					'../../app/AppViewModel.js',
 					'../../app/ProjectViewModel.js',
+					'../../app/ProjectListViewModel.js',
+					'../../app/TagListViewModel.js',
 					'../../app/Model.Media.js',
 					'../../app/Model.Project.js',
 					'../../app/Model.Tag.js',
