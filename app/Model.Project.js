@@ -11,7 +11,7 @@ function Project(id, slug, name, description, tags, featureImageUrl, media) {
 
 	self.showFeatureImage = function () {
 		console.log(self.featureImage);
-		if (self.featureImage !== undefined || self.featureImage !== null || self.featureImage !== "") {
+		if (self.featureImage !== undefined && self.featureImage !== null && self.featureImage !== "") {
 			self.featureImageIsVisible(true);
 		}
 	}
