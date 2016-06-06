@@ -41,12 +41,12 @@ $frontPageContent = get_fields(174);
 								<div class="col-sm-4" data-bind="foreach: $data">
 									<li class="project">
 										<a class="projectLink" data-bind="attr: {href: '#/project/' + slug}">
-											<span class="projectName" data-bind="text: name, event: {mouseenter: $root.showFeaturedImage, mouseleave: $root.hideFeaturedImage}"></span>
+											<span class="projectName" data-bind="text: name, event: {mouseenter: showFeatureImage, mouseleave: hideFeatureImage}"></span>
 										</a>
 										<ol class="projectTags" data-bind="template: {name: 'tags-template', foreach: tags }"></ol>
-										<!--<div class="projectImage">
-											<img data-bind="attr: {src: }" />
-										</div>-->
+										<div class="projectImage" data-bind="visible: featureImageIsVisible">
+											<img data-bind="attr: {src: featureImage}" />
+										</div>
 									</li>
 								</div>
 							</ul>

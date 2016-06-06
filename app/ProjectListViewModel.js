@@ -15,7 +15,7 @@ function ProjectListViewModel(parent) {
 				return parent.tagListVM.tagLookup[_tag.id];
 			})
 			self.projectLookup.push(item.slug);
-			return new Project(item.id, item.slug, item.name, null, _tags, item.featureMedia, null);
+			return new Project(item.id, item.slug, item.name, null, _tags, item.featureImage[0], null);
 		}));
 
 		self.updateSelectedProjectList();

@@ -278,10 +278,11 @@ h1 {
 	.projectImage {
 		position: absolute;
 		z-index: 4;
+		margin-top: 19px;
 
 		img {
-			width: 100px;
-			border: 3px solid black;
+			width: 275px;
+			border: 10px solid black;
 		}
 	}
 }

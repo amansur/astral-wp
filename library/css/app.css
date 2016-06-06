@@ -218,10 +218,11 @@ h1 {
 #work .projectImage {
   position: absolute;
   z-index: 4;
+  margin-top: 19px;
 }
 #work .projectImage img {
-  width: 100px;
-  border: 3px solid black;
+  width: 275px;
+  border: 10px solid black;
 }
 
 #about h1 {
