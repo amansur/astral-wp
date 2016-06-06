@@ -6,17 +6,14 @@ var router = Router({
 			}
 		},
 	},
-	'/home': {
-		'/:anchor': {
-			on: function (anchor) {
-				RouteHomeToAnchor(anchor);
-			}
-		}
-	},
 	'/home': function () {
-			RouteHome();
-		}
-	});
+		RouteHome();
+	}
+	,
+	'/home/:anchor': function (anchor) {
+			RouteHome(anchor);
+	}
+});
 
 router.configure();
 router.init();

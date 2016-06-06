@@ -1,18 +1,19 @@
 /// <reference path="AppViewModel.js" />
-
-
-var $projectNode = document.getElementById('project');
-var $homeNode = document.getElementById('home');
-var $menu = jQuery('.menu');
-var $project = jQuery('.project');
-var $topAnchor = jQuery('.topAnchor');
-var $projectImage = jQuery('.projectImage');
-var $astralBanner = jQuery('.astralBanner');
-
+var $projectNode, $homeNode, $menu, $project, $topAnchor, $projectImage, $astralBanner, $wpAdminBar;
 var serviceRoot = "http://192.168.99.100:8081/wp-json";
+var previousRoute = '';
 var appVM = new AppViewModel();
 
 $(function () {
+
+	$projectNode = document.getElementById('project');
+	$homeNode = document.getElementById('home');
+	$menu = jQuery('.menu');
+	$project = jQuery('.project');
+	$topAnchor = jQuery('.topAnchor');
+	$projectImage = jQuery('.projectImage');
+	$astralBanner = jQuery('.astralBanner');
+	$wpAdminBar = jQuery('#wpadminbar');
 
 	ko.applyBindings(appVM, document.getElementById('content'));
 

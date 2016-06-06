@@ -58,6 +58,10 @@ function ScrollToAnchor(anchor) {
 	if ($astralBanner.css("position") === "fixed") {
 		offset += $astralBanner.height();
 	}
+	if ($wpAdminBar.length > 0) {
+		offset += $wpAdminBar.height();
+	}
+
 	$('html, body').animate({ scrollTop: $(target).offset().top - offset }, 500);
 	return false;
 };
@@ -67,35 +71,36 @@ function ScrollToAnchor(anchor) {
 // ============================
 
 function UpdateBackground() {
-	var random = GetRandomInt(1, 8);
-	$('body').css("background-image", "url('/wp-content/themes/astral-wp/library/images/background/" + random + ".jpg')");
+	var currentController = window.location.hash.split('/')[1];
+	var previousController = previousRoute.split('/')[1];
+	if (currentController !== "home" || previousController !== "home") {
+		var random = GetRandomInt(1, 8);
+		$('body').css("background-image", "url('/wp-content/themes/astral-wp/library/images/background/" + random + ".jpg')");
+	}
 };
 
 // ============================
 // Route actions
 // ============================
 
+function RecordPreviousRoute(route) {
+	previousRoute = window.location.hash;
+};
+
 function RouteProject(slug) {
 	UpdateBackground();
 	appVM.projectVM.slug(slug);
+	RecordPreviousRoute();
 
 	$menu.find('.menuItem:first-child').css({ "background-color": "white", "color": "black" });
 	$projectNode.style.display = 'block';
 	$homeNode.style.display = 'none';
 };
 
-function RouteHome() {
+function RouteHome(anchor) {
 	UpdateBackground();
 	appVM.projectVM.slug(null);
-	console.log('home');
-	$menu.find('.menuItem:first-child').css({ "background-color": "black", "color": "white" });
-	$projectNode.style.display = 'none';
-	$homeNode.style.display = 'block';
-};
-
-function RouteHomeToAnchor(anchor) {
-	UpdateBackground();
-	appVM.projectVM.slug(null);
+	RecordPreviousRoute();
 
 	$menu.find('.menuItem:first-child').css({ "background-color": "black", "color": "white" });
 	$projectNode.style.display = 'none';
@@ -103,7 +108,7 @@ function RouteHomeToAnchor(anchor) {
 	foo = anchor;
 	console.log(anchor);
 	console.log('home-anchor');
-	if (anchor !== undefined) {
+	if (anchor.length > 0) {
 		ScrollToAnchor(anchor);
 	}
 };
