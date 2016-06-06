@@ -58,7 +58,7 @@ function ScrollToAnchor(anchor) {
 	if ($astralBanner.css("position") === "fixed") {
 		offset += $astralBanner.height();
 	}
-	if ($wpAdminBar.length > 0) {
+	if ($wpAdminBar !== null) {
 		offset += $wpAdminBar.height();
 	}
 
@@ -78,6 +78,13 @@ function UpdateBackground() {
 		$('body').css("background-image", "url('/wp-content/themes/astral-wp/library/images/background/" + random + ".jpg')");
 	}
 };
+
+function LoadBackgroundImages() {
+	for (var i = 0; i < 8; i++) {
+		var image = new Image();
+		image.src = '/wp-content/themes/astral-wp/library/images/background/' + (i + 1) + '.jpg';
+	}
+}
 
 // ============================
 // Route actions
@@ -105,12 +112,8 @@ function RouteHome(anchor) {
 	$menu.find('.menuItem:first-child').css({ "background-color": "black", "color": "white" });
 	$projectNode.style.display = 'none';
 	$homeNode.style.display = 'block';
-	foo = anchor;
-	console.log(anchor);
-	console.log('home-anchor');
-	if (anchor.length > 0) {
+
+	if (anchor !== null && anchor !== '' && anchor !== undefined) {
 		ScrollToAnchor(anchor);
 	}
 };
-
-var foo;

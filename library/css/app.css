@@ -27,7 +27,7 @@ body {
 }
 
 h1 {
-  font-size: 3em !important;
+  font-size: 5em !important;
 }
 
 @media (max-width: 767px) {
@@ -56,6 +56,10 @@ h1 {
 #nav .menu .menuItem a, #nav .menu .menuItem a:hover, #nav .menu .menuItem a:visited, #nav .menu .menuItem a:active {
   text-decoration: none;
   color: inherit;
+}
+#nav .menu .menuItem:hover {
+  background-color: white !important;
+  color: black !important;
 }
 @media (min-width: 768px) {
   #nav .menu .menuItem {
@@ -100,6 +104,11 @@ h1 {
   text-align: center;
   cursor: pointer;
   z-index: 5;
+}
+.header .topAnchor:hover {
+  background-color: white;
+  color: black;
+  font-weight: 800;
 }
 .header .astralLogo {
   margin: 17px;
@@ -190,6 +199,7 @@ h1 {
   color: black;
   background-color: white;
   padding: 3px;
+  font-size: 1.5em;
 }
 #work .projects .project .projectTags {
   margin: 0;
@@ -226,11 +236,15 @@ h1 {
 }
 
 #project .projectNav a, #project .projectNav a:hover, #project .projectNav a:visited, #project .projectNav a:active {
-  text-decoration: none;
+  text-decoration: underline;
   color: inherit;
+  font-family: Courier New, Courier, monospace;
+}
+#project .projectNav a:nth-child(1) {
+  margin-right: 10px;
 }
 #project .project .projectName {
-  font-size: 20px !important;
+  font-size: 40px !important;
 }
 #project .project .projectInvolvement {
   font-family: "Courier";
@@ -268,7 +282,7 @@ h1 {
   font-family: "Courier";
 }
 #project .media li {
-  margin: 5px auto;
+  margin: 15px auto;
 }
 #project .media .mediaPicture img {
   width: 100%;

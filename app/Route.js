@@ -14,6 +14,3 @@ var router = Router({
 			RouteHome(anchor);
 	}
 });
-
-router.configure();
-router.init();

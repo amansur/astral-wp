@@ -39,7 +39,7 @@ body {
 }
 
 h1 {
-	font-size: 3em !important;
+	font-size: 5em !important;
 }
 
 
@@ -74,6 +74,11 @@ h1 {
 	    		text-decoration: none;
 	    		color: inherit;
 	    	}
+		}
+
+		.menuItem:hover {
+			background-color: white !important;
+			color: black !important;
 		}
 
 		@media (min-width: 768px) {
@@ -129,6 +134,12 @@ h1 {
 		text-align: center;
 		cursor: pointer;
 		z-index: 5;
+	}
+
+	.topAnchor:hover {
+		background-color: white;
+		color: black;
+		font-weight: 800;
 	}
 
 	.astralLogo {
@@ -243,6 +254,7 @@ h1 {
 				color: black;
 				background-color: white;
 				padding: 3px;
+				font-size: 1.5em;
 			}
 
 			.projectTags {
@@ -302,14 +314,18 @@ h1 {
 
 	.projectNav {
 		a, a:hover, a:visited, a:active {
-	    	text-decoration: none;
+	    	text-decoration: underline;
 	    	color: inherit;
+			font-family: Courier New, Courier, monospace;
+		}
+		a:nth-child(1) {
+			margin-right: 10px;
 		}
 	}
 
 	.project {
 		.projectName {
-			font-size: 20px !important;
+			font-size: 40px !important;
 		}
 		.projectInvolvement {
 			font-family: "Courier";		
@@ -355,7 +371,7 @@ h1 {
 
 	.media {
 		li {
-			margin: 5px auto;
+			margin: 15px auto;
 		}
 		.mediaPicture {
 			img {

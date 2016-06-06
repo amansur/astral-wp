@@ -3,9 +3,10 @@ var $projectNode, $homeNode, $menu, $project, $topAnchor, $projectImage, $astral
 var serviceRoot = "http://192.168.99.100:8081/wp-json";
 var previousRoute = '';
 var appVM = new AppViewModel();
+var backgroundImages = new Array();
 
 $(function () {
-
+	LoadBackgroundImages();
 	$projectNode = document.getElementById('project');
 	$homeNode = document.getElementById('home');
 	$menu = jQuery('.menu');
@@ -41,5 +42,7 @@ $(function () {
 		return false;
 	});
 
+	router.configure();
+	router.init();
 	router.setRoute('home');
 });	
