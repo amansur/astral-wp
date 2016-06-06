@@ -10,7 +10,10 @@ function Project(id, slug, name, description, tags, featureImageUrl, media) {
 	self.featureImageIsVisible = ko.observable(false);
 
 	self.showFeatureImage = function () {
-		self.featureImageIsVisible(true);
+		console.log(self.featureImage);
+		if (self.featureImage !== undefined || self.featureImage !== null || self.featureImage !== "") {
+			self.featureImageIsVisible(true);
+		}
 	}
 
 	self.hideFeatureImage = function () {
