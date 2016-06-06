@@ -27,7 +27,7 @@ $frontPageContent = get_fields(174);
 							<h1 class="col-sm-9">Our Work</h1>
 							<span class="col-sm-3" id="filterLabel">filter work by type</span>
 						</div>
-						<div class="row" data-bind="with: tagListVM" id="filterList">
+						<div class="row" id="filterList" data-bind="with: tagListVM">
 							<ul class="col-sm-12 tags" data-bind="foreach: tags">
 								<li class="tag">
 									<input class="css-checkbox" type="checkbox" data-bind="checkedValue: $data, checked: $parent.selectedTags, attr: {id: 'tag' + id}" />
@@ -36,7 +36,16 @@ $frontPageContent = get_fields(174);
 							</ul>
 							<span class="col-sm-12" id="filterApply">apply</span>
 						</div>
-						<div class="row" data-bind="with: projectListVM">
+						<!--<div class="row" id="selectedTagList">
+							<div class="col-sm-12">
+								Showing:
+								<ul data-bind="foreach: selectedTags">
+									<li data-bind="text: name"></li>
+								</ul>
+							</div>
+						</div>-->
+						<div id="selectedTagList" class="row" data-bind="with: projectListVM">
+							<div class="col-sm-12" data-bind="text: selectedTagsSummary"></div>
 							<ul class="projects" data-bind="foreach: selectedProjects">
 								<div class="col-sm-4" data-bind="foreach: $data">
 									<li class="project">

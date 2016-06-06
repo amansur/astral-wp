@@ -8,6 +8,7 @@ function ProjectListViewModel(parent) {
 	self.projects = ko.observableArray();
 	self.projectLookup = ko.observableArray();
 	self.selectedProjects = ko.observableArray();
+	self.selectedTagsSummary = ko.observable();
 
 	jQuery.getJSON(serviceRoot + '/astral/v1/project', null, function (data) {
 		self.projects(jQuery.map(data, function (item, i) {
@@ -28,6 +29,7 @@ function ProjectListViewModel(parent) {
 				self.projectLookup.push(ele.slug);
 			});
 			self.selectedProjects(SplitArrayIntoN(self.projects(), columnCount));
+			self.selectedTagsSummary("");
 		} else {
 			self.projectLookup([]);
 			var filteredProjects = ko.utils.arrayFilter(self.projects(), function (project) {
@@ -43,6 +45,16 @@ function ProjectListViewModel(parent) {
 				return show;
 			});
 			self.selectedProjects(SplitArrayIntoN(filteredProjects, columnCount));
+			self.selectedTagsSummary(self.updateSelectedTagsSummary());
 		}
+	};
+
+	self.updateSelectedTagsSummary = function () {
+		var tagsSummary = "Showing: ";
+		var tags = parent.tagListVM.selectedTags().map(function (curr) {
+			return '"' + curr.name + '"';
+		}).join(", ");
+		tagsSummary += tags;
+		return tagsSummary;
 	};
 }

@@ -34,6 +34,7 @@ $(function () {
 
 	$('#filterApply').on('click', function () {
 		appVM.projectListVM.updateSelectedProjectList();
+		$('#filterList').slideToggle();
 	});
 
 	$menu.on('click', 'li', function (e) {

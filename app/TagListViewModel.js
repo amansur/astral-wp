@@ -5,7 +5,7 @@ function TagListViewModel(parent) {
 	var self			= this;
 	self.tags			= ko.observableArray();
 	self.selectedTags	= ko.observableArray();
-	self.tagLookup	= {};
+	self.tagLookup = {};
 
 	jQuery.getJSON(serviceRoot + '/wp/v2/project_tag', null, function (data) {
 		self.tags(jQuery.map(data, function (item) {
