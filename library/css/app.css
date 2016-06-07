@@ -26,8 +26,13 @@ body {
   font-family: 'Basis' !important;
 }
 
-h1 {
-  font-size: 5em !important;
+#content h1 {
+  font-size: 5em;
+}
+@media (max-width: 767px) {
+  #content h1 {
+    font-size: 2.75em;
+  }
 }
 
 @media (max-width: 767px) {
@@ -204,6 +209,11 @@ h1 {
   background-color: white;
   padding: 3px;
   font-size: 1.5em;
+}
+@media (max-width: 767px) {
+  #work .projects .project .projectName {
+    font-size: 2.25em;
+  }
 }
 #work .projects .project .projectTags {
   margin: 0;

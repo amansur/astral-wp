@@ -38,8 +38,16 @@ body {
 	font-family: 'Basis' !important;
 }
 
-h1 {
-	font-size: 5em !important;
+#content {
+	h1 {
+		font-size: 5em;
+	}
+
+	@media (max-width: 767px) {
+		h1 {
+			font-size: 2.75em;
+		}
+	}
 }
 
 
@@ -263,6 +271,12 @@ h1 {
 				font-size: 1.5em;
 			}
 
+			@media (max-width: 767px) {
+				.projectName {
+					font-size: 2.25em;
+				}
+			}
+
 			.projectTags {
 				margin: 0;
 				text-transform: capitalize;
@@ -335,6 +349,7 @@ h1 {
 		.projectName {
 			font-size: 40px !important;
 		}
+
 		.projectInvolvement {
 			font-family: "Courier";		
 
