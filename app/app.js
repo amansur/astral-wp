@@ -1,6 +1,6 @@
 /// <reference path="AppViewModel.js" />
 var $projectNode, $homeNode, $menu, $project, $topAnchor, $projectImage, $astralBanner, $wpAdminBar;
-var serviceRoot = "http://192.168.99.100:8081/wp-json";
+var serviceRoot = "http://astr.nsur.org/wp-json";
 var previousRoute = '';
 var appVM = new AppViewModel();
 var backgroundImages = new Array();
