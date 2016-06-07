@@ -51,7 +51,7 @@ function ScrollToTop() {
 function ScrollToAnchor(anchor) {
 	console.log(anchor);
 	var target = $('#' + anchor);
-	var offset = 0;
+	var offset = -3;
 	if ($menu.css("position") === "fixed") {
 		offset += $menu.height();
 	}

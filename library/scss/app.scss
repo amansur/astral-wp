@@ -323,6 +323,15 @@ body {
 	}
 }
 
+#intro {
+	h1 {
+		-ms-hyphens: none;
+		-moz-hyphens: none;
+		-webkit-hyphens: none;
+		hyphens: none;
+	}
+}
+
 #work, #about {
 	border-top: 2px solid white;
 }
