@@ -195,6 +195,14 @@ body {
 		padding-top: 25px;
 	}
 
+	#filterClear {
+		font-family: Courier New, Courier, monospace;
+		text-decoration: underline;
+		cursor: pointer;
+		padding-left: 10px;
+		color: white;
+	}
+
 	#selectedTagList {
 		font-family: Courier New, Courier, monospace;
 	}
@@ -303,6 +311,12 @@ body {
 		img {
 			width: 275px;
 			border: 10px solid black;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.projectImage {
+			display: none;
 		}
 	}
 }

@@ -49,7 +49,6 @@ function ScrollToTop() {
 };
 
 function ScrollToAnchor(anchor) {
-	console.log(anchor);
 	var target = $('#' + anchor);
 	var offset = -3;
 	if ($menu.css("position") === "fixed") {
@@ -74,17 +73,22 @@ function UpdateBackground() {
 	var currentController = window.location.hash.split('/')[1];
 	var previousController = previousRoute.split('/')[1];
 	if (currentController !== "home" || previousController !== "home") {
-		var random = GetRandomInt(1, 8);
-		$('body').css("background-image", "url('/wp-content/themes/astral-wp/library/images/background/" + random + ".jpg')");
+		var random = GetRandomInt(1, $backgroundImages.length);
+		var src = $backgroundImages[random].src;
+		$body.css("background-image", "url('" + src + "')");
 	}
 };
 
 function LoadBackgroundImages() {
+	var images = new Array();
 	for (var i = 0; i < 8; i++) {
 		var image = new Image();
 		image.src = '/wp-content/themes/astral-wp/library/images/background/' + (i + 1) + '.jpg';
+		images.push(image);
 	}
+	fool = images;
 }
+var fool;fool
 
 // ============================
 // Route actions

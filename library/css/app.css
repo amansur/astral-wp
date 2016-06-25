@@ -144,6 +144,13 @@ body {
   cursor: pointer;
   padding-top: 25px;
 }
+#work #filterClear {
+  font-family: Courier New, Courier, monospace;
+  text-decoration: underline;
+  cursor: pointer;
+  padding-left: 10px;
+  color: white;
+}
 #work #selectedTagList {
   font-family: Courier New, Courier, monospace;
 }
@@ -237,6 +244,11 @@ body {
 #work .projectImage img {
   width: 275px;
   border: 10px solid black;
+}
+@media (max-width: 767px) {
+  #work .projectImage {
+    display: none;
+  }
 }
 
 #about h1 {

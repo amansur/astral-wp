@@ -1,5 +1,5 @@
 /// <reference path="AppViewModel.js" />
-var $projectNode, $homeNode, $menu, $project, $topAnchor, $projectImage, $astralBanner, $wpAdminBar;
+var $projectNode, $homeNode, $menu, $project, $topAnchor, $projectImage, $astralBanner, $wpAdminBar, $body, $backgroundImages;
 var serviceRoot = "http://astr.nsur.org/wp-json";
 var previousRoute = '';
 var appVM = new AppViewModel();
@@ -15,6 +15,8 @@ $(function () {
 	$projectImage = jQuery('.projectImage');
 	$astralBanner = jQuery('.astralBanner');
 	$wpAdminBar = jQuery('#wpadminbar');
+	$body = jQuery('body');
+	$backgroundImages = jQuery('#backgroundImages img');
 
 	ko.applyBindings(appVM, document.getElementById('content'));
 
@@ -33,7 +35,7 @@ $(function () {
 	});
 
 	$('#filterApply').on('click', function () {
-		appVM.projectListVM.updateSelectedProjectList();
+		//appVM.projectListVM.updateSelectedProjectList();
 		$('#filterList').slideToggle();
 	});
 

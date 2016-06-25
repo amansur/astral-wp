@@ -13,4 +13,8 @@ function TagListViewModel(parent) {
 			return self.tagLookup[item.id];
 		}));
 	});
+
+	self.applyFilter = function () {
+		parent.projectListVM.updateSelectedProjectList();
+	};
 }

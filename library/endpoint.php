@@ -285,7 +285,7 @@ class AstralController extends WP_REST_Controller {
 		$fields = array();
 		foreach(get_fields($item->ID) as $key => $value) {
 			if($key == "feature_image") {
-				$fields[$key] = wp_get_attachment_image_src($value);
+				$fields[$key] = wp_get_attachment_image_src($value, 'astralweb-thumb-255');
 			}
 			else {
 				$fields[$key] = $value;

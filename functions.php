@@ -84,6 +84,7 @@ if ( ! isset( $content_width ) ) {
 // Thumbnail sizes
 add_image_size( 'astralweb-thumb-600', 600, 150, true );
 add_image_size( 'astralweb-thumb-300', 300, 100, true );
+add_image_size( 'astralweb-thumb-255', 255, 255, true );
 
 /*
 to add more sizes, simply copy a line from above

@@ -57,4 +57,9 @@ function ProjectListViewModel(parent) {
 		tagsSummary += tags;
 		return tagsSummary;
 	};
+
+	self.clearFilter = function () {
+		parent.tagListVM.selectedTags([]);
+		self.updateSelectedProjectList();
+	};
 }
