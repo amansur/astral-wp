@@ -133,7 +133,7 @@ register_field_group(array (
 					'key' => '57019ab71cff8',
 					'name' => 'picture',
 					'label' => 'Picture',
-					'display' => 'table',
+					'display' => 'row',
 					'sub_fields' => array (
 						array (
 							'key' => 'field_57019ab71cff9',
@@ -176,6 +176,22 @@ register_field_group(array (
 							'tabs' => 'all',
 							'toolbar' => 'full',
 							'media_upload' => 1,
+						),
+						array (
+							'key' => 'field_57019ab71cffb',
+							'label' => 'Image half-size?',
+							'name' => 'half-width',
+							'type' => 'true_false',
+							'instructions' => 'Check box for image to span half the width',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array (
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'message' => '',
+							'default_value' => 0,
 						),
 					),
 					'min' => '',
