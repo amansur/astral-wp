@@ -27,11 +27,6 @@ body {
   min-height: 100%;
 }
 
-@media (max-width: 767px) {
-  body {
-    background-attachment: scroll;
-  }
-}
 #content h1 {
   font-size: 5em;
 }
