@@ -218,7 +218,20 @@ body {
 			margin-right: 10px;
 			margin-bottom: 4px;
 
-			input[type=checkbox].css-checkbox {
+			/*input[type=checkbox].css-checkbox {
+				position: absolute;
+				z-index: -1000;
+				left: -1000px;
+				overflow: hidden; 
+				clip: rect(0 0 0 0); 
+				height: 1px;
+				width: 1px; 
+				margin: -1px;
+				padding: 0; 
+				border: 0;
+			}*/
+
+			.tagCheckbox {
 				position: absolute;
 				z-index: -1000;
 				left: -1000px;
@@ -231,7 +244,7 @@ body {
 				border: 0;
 			}
 
-			input[type=checkbox].css-checkbox + label.css-label {
+			/*input[type=checkbox].css-checkbox + label.css-label {
 				padding-left: 24px;
 				height: 20px; 
 				display: inline-block;
@@ -241,10 +254,27 @@ body {
 				font-size: 20px;
 				vertical-align: middle;
 				cursor: pointer;
+			}*/
+
+			.tagLabel { 
+				padding-left: 24px;
+				height: 20px; 
+				display: inline-block;
+				line-height: 20px;
+				background-repeat: no-repeat;
+				font-size: 20px;
+				vertical-align: middle;
+				cursor: pointer;
 			}
 
-			input[type=checkbox].css-checkbox:checked + label.css-label, 
-			input[type=checkbox].css-checkbox:hover + label.css-label {
+			/*input[type=checkbox].css-checkbox:checked + label.css-label, 
+			input[type=checkbox].css-checkbox:hover + label.css-label { 
+				background-position: 0 0px;
+			}*/
+			label.tagUnchecked {
+				background-position: 0 -20px;
+			}
+			label.tagChecked {
 				background-position: 0 0px;
 			}
 

@@ -40,8 +40,8 @@ $frontPageContent = get_fields(174);
 							<div class="row" id="filterList" data-bind="with: tagListVM">
 								<ul class="col-sm-12 tags" data-bind="foreach: tags">
 									<li class="tag">
-										<input class="css-checkbox" type="checkbox" data-bind="checkedValue: $data, checked: $parent.selectedTags, attr: {id: 'tag' + id}" />
-										<label class="css-label" data-bind="text: name, attr: {for: 'tag' + id}"></label>
+										<input class="css-checkbox tagCheckbox" type="checkbox" data-bind="checkedValue: $data, checked: $parent.selectedTags, attr: {id: 'tag' + id}" />
+										<label class="css-label tagLabel tagUnchecked" data-bind="text: name, attr: {for: 'tag' + id}"></label>
 									</li>
 								</ul>
 								<span class="col-sm-12" id="filterApply" data-bind="click: applyFilter">apply</span>
@@ -131,9 +131,9 @@ $frontPageContent = get_fields(174);
 						</div>
 						<div class="row">
 							<div class="col-sm-12">
-								<ul class="media" data-bind="foreach: media">
+								<ul class="media row" data-bind="foreach: media">
 									<!-- ko if: type == "video" -->
-									<li class="mediaVideo">
+									<li class="mediaVideo col-sm-12">
 										<div class="embed-responsive embed-responsive-16by9">
 											<iframe class="embed-responsive-item" data-bind="attr: {src: content}"></iframe>
 										</div>
@@ -141,7 +141,7 @@ $frontPageContent = get_fields(174);
 									</li>
 									<!-- /ko -->
 									<!--ko if: type == "picture" -->
-									<li class="mediaPicture" data-bind="css: { halfWidthPicture: halfWidth }">
+									<li class="mediaPicture" data-bind="css: { 'col-sm-6': halfWidth, 'col-sm-12': !halfWidth }">
 										<img data-bind="attr: {src: content}" />
 										<span data-bind="html: description"></span>
 									</li>

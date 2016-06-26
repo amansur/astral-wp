@@ -35,7 +35,6 @@ $(function () {
 	});
 
 	$('#filterApply').on('click', function () {
-		//appVM.projectListVM.updateSelectedProjectList();
 		$('#filterList').slideToggle();
 	});
 
@@ -43,6 +42,31 @@ $(function () {
 		var target = e.currentTarget.children[0].hash.split('/')[2];
 		router.setRoute('home/' + target);
 		return false;
+	});
+
+	$('.tags').on('click', '.tagLabel', function () {
+		$(this).toggleClass('selected');
+		if ($(this).hasClass('selected')) {
+			$(this).removeClass('tagUnchecked');
+			$(this).addClass('tagChecked');
+		} else {
+			$(this).removeClass('tagChecked');
+			$(this).addClass('tagUnchecked');
+		}
+	});
+
+	$('.tags').on('mouseenter', '.tagLabel', function () {
+		if (!$(this).hasClass('selected')) {
+			$(this).addClass('tagChecked');
+			$(this).removeClass('tagUnchecked');
+		}
+	});
+
+	$('.tags').on('mouseleave', '.tagLabel', function () {
+		if (!$(this).hasClass('selected')) {
+			$(this).removeClass('tagChecked');
+			$(this).addClass('tagUnchecked');
+		}
 	});
 
 	router.configure();
