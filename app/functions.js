@@ -73,7 +73,7 @@ function UpdateBackground() {
 	var currentController = window.location.hash.split('/')[1];
 	var previousController = previousRoute.split('/')[1];
 	if (currentController !== "home" || previousController !== "home") {
-		var random = GetRandomInt(1, $backgroundImages.length);
+		var random = GetRandomInt(0, $backgroundImages.length - 1);
 		var src = $backgroundImages[random].src;
 		$body.css("background-image", "url('" + src + "')");
 	}
