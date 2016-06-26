@@ -34,7 +34,8 @@ function ProjectViewModel(parent) {
 				return parent.tagListVM.tagLookup[tag.id];
 			});
 			var _projectMedia = jQuery.map(data.media, function (media) {
-				return new Media(media.content, media.description, media.type);
+				console.log(media);
+				return new Media(media.content, media.description, media.type, media.halfWidth);
 			});
 			_project = new Project(data.id, data.slug, data.name, data.description, _projectTags, null, _projectMedia);
 			self.project(_project);

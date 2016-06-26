@@ -331,7 +331,7 @@ class AstralController extends WP_REST_Controller {
 		            if($mediaItem["acf_fc_layout"] == "picture") {
 		                $media["content"] = wp_get_attachment_image_src($mediaItem["image"], "full")[0];
 						$media["description"] = $mediaItem["image_description"];
-						$media["half-width"] = $mediaItem["half-width"];
+						$media["halfWidth"] = $mediaItem["half-width"];
 		            }
 		            else {
 		                $media["content"] = $mediaItem["video_url"];

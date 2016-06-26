@@ -141,7 +141,7 @@ $frontPageContent = get_fields(174);
 									</li>
 									<!-- /ko -->
 									<!--ko if: type == "picture" -->
-									<li class="mediaPicture">
+									<li class="mediaPicture" data-bind="css: { halfWidthPicture: halfWidth }">
 										<img data-bind="attr: {src: content}" />
 										<span data-bind="html: description"></span>
 									</li>
