@@ -30,6 +30,14 @@ function GetRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+function IsTouch() {
+	var bool = false;
+	if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+		bool = true;
+	}
+	return bool;
+}
+
 // ============================
 // Scroll controls
 // ============================
