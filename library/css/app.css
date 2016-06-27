@@ -294,6 +294,7 @@ body {
   -webkit-hyphens: none;
   hyphens: none;
   word-break: keep-all;
+  word-wrap: normal;
 }
 
 #work, #about {
