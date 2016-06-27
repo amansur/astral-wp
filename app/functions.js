@@ -84,8 +84,9 @@ function UpdateBackground() {
 // ============================
 
 function ClearTagCheckboxes() {
-	$tags.find('.tagLabel').each(function() { $(this).removeClass('selected'); });
-	$tags.find('.tagLabel').each(function() { $(this).removeClass('tagChecked'); });
+	$tags.find('.tagLabel').each(function () { $(this).removeClass('selected'); });
+	$tags.find('.tagLabel').each(function () { $(this).removeClass('tagChecked'); });
+	$tags.find('.tagLabel').each(function () { $(this).addClass('tagUnchecked'); });
 };
 
 // ============================
