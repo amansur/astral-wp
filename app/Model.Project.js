@@ -11,7 +11,7 @@ function Project(id, slug, name, description, tags, featureImageUrl, media) {
 
 	self.showFeatureImage = function () {
 		if (self.featureImage !== undefined && self.featureImage !== null && self.featureImage !== "") {
-			self.featureImageIsVisible(IsTouch()); // true
+			self.featureImageIsVisible(!IsTouch()); // true
 		}
 	}
 
