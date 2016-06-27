@@ -288,13 +288,11 @@ body {
   font-family: "Courier";
 }
 
-#intro h1 {
+#intro h1 p {
   -ms-hyphens: none;
   -moz-hyphens: none;
   -webkit-hyphens: none;
   hyphens: none;
-  word-break: keep-all;
-  word-wrap: normal;
 }
 
 #work, #about {

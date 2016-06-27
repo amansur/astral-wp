@@ -370,12 +370,12 @@ body {
 
 #intro {
 	h1 {
-		-ms-hyphens: none;
-		-moz-hyphens: none;
-		-webkit-hyphens: none;
-		hyphens: none;
-		word-break: keep-all;
-		word-wrap: normal;
+		p {
+			-ms-hyphens: none;
+			-moz-hyphens: none;
+			-webkit-hyphens: none;
+			hyphens: none;
+		}
 	}
 }
 
