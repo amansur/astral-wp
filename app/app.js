@@ -1,12 +1,11 @@
 /// <reference path="AppViewModel.js" />
-var $projectNode, $homeNode, $menu, $project, $topAnchor, $projectImage, $astralBanner, $wpAdminBar, $body, $backgroundImages;
+var $projectNode, $homeNode, $menu, $project, $topAnchor, $projectImage, $astralBanner, $wpAdminBar, $body, $backgroundImages, $tags;
 var serviceRoot = "http://astr.nsur.org/wp-json";
 var previousRoute = '';
 var appVM = new AppViewModel();
 var backgroundImages = new Array();
 
 $(function () {
-	LoadBackgroundImages();
 	$projectNode = document.getElementById('project');
 	$homeNode = document.getElementById('home');
 	$menu = jQuery('.menu');
@@ -16,6 +15,7 @@ $(function () {
 	$astralBanner = jQuery('.astralBanner');
 	$wpAdminBar = jQuery('#wpadminbar');
 	$body = jQuery('body');
+	$tags = jQuery('.tags');
 	$backgroundImages = jQuery('#backgroundImages img');
 
 	ko.applyBindings(appVM, document.getElementById('content'));
@@ -44,7 +44,7 @@ $(function () {
 		return false;
 	});
 
-	$('.tags').on('click', '.tagLabel', function () {
+	$tags.on('click', '.tagLabel', function () {
 		$(this).toggleClass('selected');
 		if ($(this).hasClass('selected')) {
 			$(this).removeClass('tagUnchecked');
@@ -55,14 +55,14 @@ $(function () {
 		}
 	});
 
-	$('.tags').on('mouseenter', '.tagLabel', function () {
+	$tags.on('mouseenter', '.tagLabel', function () {
 		if (!$(this).hasClass('selected')) {
 			$(this).addClass('tagChecked');
 			$(this).removeClass('tagUnchecked');
 		}
 	});
 
-	$('.tags').on('mouseleave', '.tagLabel', function () {
+	$tags.on('mouseleave', '.tagLabel', function () {
 		if (!$(this).hasClass('selected')) {
 			$(this).removeClass('tagChecked');
 			$(this).addClass('tagUnchecked');

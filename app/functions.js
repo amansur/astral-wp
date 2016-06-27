@@ -79,16 +79,14 @@ function UpdateBackground() {
 	}
 };
 
-function LoadBackgroundImages() {
-	var images = new Array();
-	for (var i = 0; i < 8; i++) {
-		var image = new Image();
-		image.src = '/wp-content/themes/astral-wp/library/images/background/' + (i + 1) + '.jpg';
-		images.push(image);
-	}
-	fool = images;
-}
-var fool;fool
+// ============================
+// Tag list checkboxes controls
+// ============================
+
+function ClearTagCheckboxes() {
+	$tags.find('.tagLabel').removeClass('selected');
+	$tags.find('.tagLabel').removeClass('tagChecked');
+};
 
 // ============================
 // Route actions

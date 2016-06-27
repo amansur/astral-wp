@@ -61,5 +61,6 @@ function ProjectListViewModel(parent) {
 	self.clearFilter = function () {
 		parent.tagListVM.selectedTags([]);
 		self.updateSelectedProjectList();
+		ClearTagCheckboxes();
 	};
 }
