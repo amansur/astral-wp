@@ -74,7 +74,7 @@ body {
     transform: rotate(-90deg);
     position: fixed;
     width: 125px;
-    left: -35px;
+    left: -36px;
     top: 175px;
   }
   #nav .menu .menuItem:nth-child(2) {
