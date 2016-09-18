@@ -38,7 +38,7 @@ function StartViewModel() {
 	};
 
 	self.getProjects = function(allTags) {
-		jQuery.get('//astr.nsur.org/wp-json/wp/v2/project?per_page=99', null, function(data) {
+		jQuery.get('/wp-json/wp/v2/project?per_page=99', null, function(data) {
 			var _projects = jQuery.map(data, function (project) {
 				var _projectTags = jQuery.map(project.project_tag, function(tag) {
 					return allTags[tag];
