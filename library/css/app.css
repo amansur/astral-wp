@@ -40,7 +40,7 @@ a {
   color: white;
 }
 
-a:hover, a:focus, a:visited:hover, a:visited:focus {
+a:hover, a:focus, a:visited:hover, a:visited:focus, a:visited {
   color: white;
 }
 
