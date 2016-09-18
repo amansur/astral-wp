@@ -36,6 +36,18 @@ body {
   }
 }
 
+a {
+  color: white;
+}
+
+a:hover, a:focus, a:visited:hover, a:visited:focus {
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 767px) {
   #nav {
     margin-top: 75px;

@@ -51,6 +51,18 @@ body {
 	}
 }
 
+a {
+	color: white;
+}
+
+a:hover, a:focus, a:visited:hover, a:visited:focus {
+    color: white;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 
 //	==================================================================
 //		1.0 Navigation
