@@ -36,11 +36,10 @@ body {
   }
 }
 
-a, a:hover, a:focus, a:visited:hover, a:visited:focus, a:visited {
+#about a, #about a:hover, #about a:focus, #about a:visited:hover, #about a:visited:focus, #about a:visited {
   color: white !important;
 }
-
-a:hover {
+#about a:hover {
   text-decoration: underline;
 }
 
