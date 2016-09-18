@@ -37,7 +37,7 @@ body {
 }
 
 a, a:hover, a:focus, a:visited:hover, a:visited:focus, a:visited {
-  color: white;
+  color: white !important;
 }
 
 a:hover {
