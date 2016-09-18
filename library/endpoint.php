@@ -44,8 +44,8 @@ class AstralController extends WP_REST_Controller {
     public function get_items( $request ) {
 		$postType = 'project'; //$postType = $this->post_type;
 		$args                         = array();
-		$args['meta_key']			  = 'display_name';
-		$args['orderby']              = 'meta_value_num';
+		//$args['meta_key']			  = 'display_name';
+		$args['orderby']              = 'name';
 		$args['order']                = 'ASC';		
 		$args['posts_per_page']       = $request['per_page'] ? $request['per_page'] : -1;
 		$args['post_type']			  = $postType;
