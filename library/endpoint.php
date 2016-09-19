@@ -294,11 +294,14 @@ class AstralController extends WP_REST_Controller {
 		}
 
 		$tags = array();
-		foreach(get_the_terms($item->ID, "project_tag") as $key => $value) {
-			$tag			= array();
-			$tag["id"]		= $value->term_id;
-			$tag["name"]	= $value->name;
-			array_push($tags, $tag);
+		$terms = get_the_terms($item->ID, "project_tag");
+		if ( $terms && ! is_wp_error( $terms ) ) {
+			foreach(get_the_terms($item->ID, "project_tag") as $key => $value) {
+				$tag			= array();
+				$tag["id"]		= $value->term_id;
+				$tag["name"]	= $value->name;
+				array_push($tags, $tag);
+			}
 		}
 
 		$project = array();
