@@ -114,7 +114,7 @@ $frontPageContent = get_fields(174);
 								<h1 class="projectName" data-bind="text: name"></h1>
 								<div class="projectInvolvement">
 									<!-- ko if: $data.tags !== undefined -->
-									Involvement ➔
+									Involvement
 									<!-- /ko -->
 									<ol class="projectTags" data-bind="template: {name: 'tags-template', foreach: tags }"></ol>
 								</div>

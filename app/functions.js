@@ -56,7 +56,10 @@ function ScrollToTop() {
 	return false;
 };
 
-function ScrollToAnchor(anchor) {
+function ScrollToAnchor(anchor, speed) {
+	if (speed === null)
+		speed = 500;
+
 	var target = $('#' + anchor);
 	var offset = -3;
 	if ($menu.css("position") === "fixed") {
@@ -69,7 +72,7 @@ function ScrollToAnchor(anchor) {
 		offset += $wpAdminBar.height();
 	}
 
-	$('html, body').animate({ scrollTop: $(target).offset().top - offset }, 500);
+	$('html, body').animate({ scrollTop: $(target).offset().top - offset }, speed);
 	return false;
 };
 
@@ -125,6 +128,6 @@ function RouteHome(anchor) {
 	$homeNode.style.display = 'block';
 
 	if (anchor !== null && anchor !== '' && anchor !== undefined) {
-		ScrollToAnchor(anchor);
+		ScrollToAnchor(anchor, 0);
 	}
 };
