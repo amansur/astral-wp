@@ -46,14 +46,6 @@ $frontPageContent = get_fields(174);
 								</ul>
 								<span class="col-sm-12" id="filterApply" data-bind="click: applyFilter">apply</span>
 							</div>
-							<!--<div class="row" id="selectedTagList">
-								<div class="col-sm-12">
-									Showing:
-									<ul data-bind="foreach: selectedTags">
-										<li data-bind="text: name"></li>
-									</ul>
-								</div>
-							</div>-->
 							<div id="selectedTagList" class="row" data-bind="with: projectListVM">
 								<div class="col-sm-12">
 									<span data-bind="text: selectedTagsSummary"></span>
