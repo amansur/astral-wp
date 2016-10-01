@@ -21,13 +21,13 @@ Stylesheet: Knockout Application Stylesheet
 //		0.0 Global
 //	==================================================================
 
-@font-face{ 
+$red: #f01d4f;
+$red_link: $red;
+
+@font-face {
 	font-family: 'Basis';
 	src: url('/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.eot');
-	src: url('/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.eot?#iefix') format('embedded-opentype'),
-	     url('/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.woff') format('woff'),
-	     url('/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.ttf') format('truetype'),
-	     url('/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.svg#webfont') format('svg');
+	src: url('/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.eot?#iefix') format('embedded-opentype'), url('/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.woff') format('woff'), url('/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.ttf') format('truetype'), url('/wp-content/themes/astral-wp/library/fonts/basis_grotesque_bold-web.svg#webfont') format('svg');
 }
 
 body {
@@ -51,15 +51,16 @@ body {
 	}
 }
 
-#about {
+#about, .projectDescription {
 	a, a:hover, a:focus, a:visited:hover, a:visited:focus, a:visited {
-		color: white !important;
+		color: $red_link;
 	}
 
 	a:hover {
 		text-decoration: underline;
 	}
 }
+
 
 
 //	==================================================================
@@ -82,17 +83,17 @@ body {
 			background-color: black;
 			text-decoration: none;
 			color: white;
-	    	font-weight: bold;  
-	    	text-align: center;
-		    font-size: 24px;
-		    padding: 10px;
-		    vertical-align: middle;
-		    cursor: pointer;
+			font-weight: bold;
+			text-align: center;
+			font-size: 24px;
+			padding: 10px;
+			vertical-align: middle;
+			cursor: pointer;
 
-		    a, a:hover, a:visited, a:active {
-	    		text-decoration: none;
-	    		color: inherit;
-	    	}
+			a, a:hover, a:visited, a:active {
+				text-decoration: none;
+				color: inherit;
+			}
 		}
 
 		.menuItem:hover {
@@ -101,22 +102,20 @@ body {
 		}
 
 		@media (min-width: 768px) {
-		    .menuItem {
-		    	-webkit-transform: rotate(-90deg);
-			    -ms-transform: rotate(-90deg);
-			    transform: rotate(-90deg);
-
-			    position: fixed;
+			.menuItem {
+				-webkit-transform: rotate(-90deg);
+				-ms-transform: rotate(-90deg);
+				transform: rotate(-90deg);
+				position: fixed;
 				width: 125px;
-			    left: -36px;
-			    top: 175px;
-		    }
+				left: -36px;
+				top: 175px;
+			}
 
-		    .menuItem:nth-child(2) {
+			.menuItem:nth-child(2) {
 				top: 315px;
 			}
 		}
-
 	}
 }
 
@@ -126,6 +125,7 @@ body {
 
 .header {
 	overflow: hidden;
+
 	.astralBanner {
 		background-color: black;
 		height: 75px;
@@ -218,17 +218,16 @@ body {
 		font-family: Courier New, Courier, monospace;
 	}
 
-	
+
 	.tags {
 		display: flex;
 		flex-flow: column;
 		align-content: stretch;
 		text-transform: capitalize;
-		
+
 		.tag {
 			margin-right: 10px;
 			margin-bottom: 6px;
-
 			/*input[type=checkbox].css-checkbox {
 				position: absolute;
 				z-index: -1000;
@@ -241,20 +240,18 @@ body {
 				padding: 0; 
 				border: 0;
 			}*/
-
 			.tagCheckbox {
 				position: absolute;
 				z-index: -1000;
 				left: -1000px;
-				overflow: hidden; 
-				clip: rect(0 0 0 0); 
+				overflow: hidden;
+				clip: rect(0 0 0 0);
 				height: 1px;
-				width: 1px; 
+				width: 1px;
 				margin: -1px;
-				padding: 0; 
+				padding: 0;
 				border: 0;
 			}
-
 			/*input[type=checkbox].css-checkbox + label.css-label {
 				padding-left: 24px;
 				height: 20px; 
@@ -266,10 +263,9 @@ body {
 				vertical-align: middle;
 				cursor: pointer;
 			}*/
-
-			.tagLabel { 
+			.tagLabel {
 				padding-left: 24px;
-				height: 20px; 
+				height: 20px;
 				display: inline-block;
 				line-height: 20px;
 				background-repeat: no-repeat;
@@ -277,7 +273,6 @@ body {
 				vertical-align: middle;
 				cursor: pointer;
 			}
-
 			/*input[type=checkbox].css-checkbox:checked + label.css-label, 
 			input[type=checkbox].css-checkbox:hover + label.css-label { 
 				background-position: 0 0px;
@@ -285,12 +280,13 @@ body {
 			label.tagUnchecked {
 				background-position: 0 -20px;
 			}
+
 			label.tagChecked {
 				background-position: 0 0px;
 			}
 
 			label.css-label {
-				background-image:url('/wp-content/themes/astral-wp/library/images/checkbox.png');
+				background-image: url('/wp-content/themes/astral-wp/library/images/checkbox.png');
 				-webkit-touch-callout: none;
 				-webkit-user-select: none;
 				-khtml-user-select: none;
@@ -338,12 +334,13 @@ body {
 				.projectTag ~ .projectTag:before {
 					content: '\25a0';
 					position: relative;
-					bottom: 0px;
-					left: 2px;
+					bottom: 0;
+					left: 0;
 				}
 			}
 		}
 	}
+
 	.projectImage {
 		position: absolute;
 		z-index: 4;
@@ -401,11 +398,13 @@ body {
 #project {
 
 	.projectNav {
-		a, a:hover, a:visited, a:active {
-	    	text-decoration: underline;
-	    	color: inherit;
+		a, a:hover, a:visited, a:active, a:focus, a:visited:hover, a:visited:focus {
+			text-decoration: underline;
+			color: inherit;
 			font-family: Courier New, Courier, monospace;
+			color: white !important;
 		}
+
 		a:nth-child(1) {
 			margin-right: 10px;
 		}
@@ -417,8 +416,7 @@ body {
 		}
 
 		.projectInvolvement {
-			font-family: "Courier";		
-
+			font-family: "Courier";
 			/*.projectTags {
 				margin: 0;
 				text-transform: capitalize;
@@ -434,7 +432,6 @@ body {
 					margin: 0 6px;
 				}
 			}*/
-
 			.projectTags {
 				margin: 0;
 				text-transform: capitalize;
@@ -451,8 +448,8 @@ body {
 					left: 2px;
 				}
 			}
-
 		}
+
 		.projectDescription {
 			font-family: "Courier";
 		}
@@ -462,14 +459,13 @@ body {
 		li {
 			margin: 15px auto;
 		}
+
 		.mediaPicture {
 			img {
 				width: 100%;
 			}
 		}
-
 	}
-	
 }
 
 

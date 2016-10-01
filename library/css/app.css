@@ -36,10 +36,10 @@ body {
   }
 }
 
-#about a, #about a:hover, #about a:focus, #about a:visited:hover, #about a:visited:focus, #about a:visited {
-  color: white !important;
+#about a, #about a:hover, #about a:focus, #about a:visited:hover, #about a:visited:focus, #about a:visited, .projectDescription a, .projectDescription a:hover, .projectDescription a:focus, .projectDescription a:visited:hover, .projectDescription a:visited:focus, .projectDescription a:visited {
+  color: #f01d4f;
 }
-#about a:hover {
+#about a:hover, .projectDescription a:hover {
   text-decoration: underline;
 }
 
@@ -269,8 +269,8 @@ body {
 #work .projects .project .projectTags .projectTag ~ .projectTag:before {
   content: '\25a0';
   position: relative;
-  bottom: 0px;
-  left: 2px;
+  bottom: 0;
+  left: 0;
 }
 #work .projectImage {
   position: absolute;
@@ -306,10 +306,11 @@ body {
   border-top: 2px solid white;
 }
 
-#project .projectNav a, #project .projectNav a:hover, #project .projectNav a:visited, #project .projectNav a:active {
+#project .projectNav a, #project .projectNav a:hover, #project .projectNav a:visited, #project .projectNav a:active, #project .projectNav a:focus, #project .projectNav a:visited:hover, #project .projectNav a:visited:focus {
   text-decoration: underline;
   color: inherit;
   font-family: Courier New, Courier, monospace;
+  color: white !important;
 }
 #project .projectNav a:nth-child(1) {
   margin-right: 10px;
