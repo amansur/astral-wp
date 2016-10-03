@@ -52,7 +52,12 @@ function DisplayScrollToTop() {
 };
 
 function ScrollToTop() {
+	var previousController = previousRoute.split('/')[1];
 	$('html, body').animate({ scrollTop: 0 }, 500);
+
+	if (previousController === 'home')
+		window.location.hash = '/home';
+
 	return false;
 };
 
@@ -119,15 +124,17 @@ function RouteProject(slug) {
 };
 
 function RouteHome(anchor) {
+	var previousController = previousRoute.split('/')[1];
+
 	UpdateBackground();
 	appVM.projectVM.slug(null);
 	RecordPreviousRoute();
-
+	
 	$menu.find('.menuItem:first-child').css({ "background-color": "black", "color": "white" });
 	$projectNode.style.display = 'none';
 	$homeNode.style.display = 'block';
 
 	if (anchor !== null && anchor !== '' && anchor !== undefined) {
-		ScrollToAnchor(anchor, 0);
+		ScrollToAnchor(anchor, previousController === 'home' ? 500 : 0);
 	}
 };
