@@ -150,7 +150,7 @@ body {
   font-family: Courier New, Courier, monospace;
   text-decoration: underline;
   cursor: pointer;
-  padding-top: 25px;
+  margin-top: 25px;
 }
 #work #filterClear {
   font-family: Courier New, Courier, monospace;
