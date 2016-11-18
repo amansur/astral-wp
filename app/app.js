@@ -71,5 +71,7 @@ $(function () {
 
 	router.configure();
 	router.init();
-	router.setRoute('home');
+	if (window.location.hash === '') {
+		router.setRoute('home');
+	}
 });	
