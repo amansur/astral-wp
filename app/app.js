@@ -68,10 +68,22 @@ $(function () {
 			$(this).addClass('tagUnchecked');
 		}
 	});
-
+	
 	router.configure();
 	router.init();
-	if (window.location.hash === '') {
-		router.setRoute('home');
-	}
-});	
+	var hash = window.location.hash;
+	var base = window.location.href.split('#')[0];
+	router.setRoute(hash.substr(1));
+	//if (hash !== '')
+		//window.location.href = base + hash;
+	//router.setRoute('home');
+	
+	//if (hash === '') {
+	//	router.setRoute('home');
+	//	console.log('routing home');
+	//} else {
+	//	router.setRoute(hash.substr(1));
+	//	console.log('routing to', hash.substr(1));
+	//}
+});
+

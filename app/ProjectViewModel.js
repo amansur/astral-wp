@@ -13,13 +13,12 @@ function ProjectViewModel(parent) {
 	self.next = ko.observable();
 	self.prev = ko.observable();
 	self.project = ko.observable();
-
+	
 	var i = 0;
 	ko.computed(function () {
-		//console.log(i++);
 		var projectLookup = parent.projectListVM.projectLookup();
 		var slug = self.slug();
-
+		
 		if (projectLookup.length === 0) {
 			return false;
 		}
@@ -37,8 +36,9 @@ function ProjectViewModel(parent) {
 				return new Media(media.content, media.description, media.type, media.halfWidth);
 			});
 			_project = new Project(data.id, data.slug, data.name, data.description, _projectTags, null, _projectMedia);
+			
 			self.project(_project);
-
+			
 			var cur, next, prev;
 			projectLookup.forEach(function (ele, ind) {
 				if (ele === slug) {

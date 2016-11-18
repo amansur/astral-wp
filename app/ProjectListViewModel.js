@@ -11,37 +11,40 @@ function ProjectListViewModel(parent) {
 	self.selectedTagsSummary = ko.observable();
 
 	jQuery.getJSON(serviceRoot + '/astral/v1/project', null, function (data) {
+		var _projectLookup = [];
 		self.projects(jQuery.map(data, function (item, i) {
 			var _tags = jQuery.map(item.tags, function (_tag) {
 				return parent.tagListVM.tagLookup[_tag.id];
 			})
-			self.projectLookup.push(item.slug);
+			_projectLookup.push(item.slug);
 			return new Project(item.id, item.slug, item.name, null, _tags, item.featureImage[0], null);
 		}));
-
+		self.projectLookup(_projectLookup);
 		self.updateSelectedProjectList();
 	});
 
 	self.updateSelectedProjectList = function () {
 		if (!parent.tagListVM.selectedTags() || parent.tagListVM.selectedTags().length === 0) {
 			self.projectLookup([]);
+			var _projectLookup = [];
 			self.projects().forEach(function (ele, ind) {
-				self.projectLookup.push(ele.slug);
+				_projectLookup.push(ele.slug);
 			});
+			self.projectLookup(_projectLookup);
 			self.selectedProjects(SplitArrayIntoN(self.projects(), columnCount));
 			self.selectedTagsSummary("");
 		} else {
 			self.projectLookup([]);
 			var filteredProjects = ko.utils.arrayFilter(self.projects(), function (project) {
 				var show = false;
-
+				var _projectLookup = [];
 				project.tags.forEach(function (projectTag) {
 					if (parent.tagListVM.selectedTags().indexOf(projectTag) !== -1) {
-						self.projectLookup.push(project.slug);
+						_projectLookup.push(project.slug);
 						show = true;
 					}
 				});
-
+				self.projectLookup(_projectLookup);
 				return show;
 			});
 			self.selectedProjects(SplitArrayIntoN(filteredProjects, columnCount));
