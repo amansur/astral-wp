@@ -147,7 +147,7 @@ function astralweb_scripts_and_styles() {
 
 		// wp_register_script( 'pager', get_stylesheet_directory_uri().'/bower_components/pagerjs/pager.js', array('jquery', 'knockout'), '', true);
 
-		wp_register_script( 'astral-ko-app', get_stylesheet_directory_uri() . '/app/app.min.js', array('knockout', 'jquery_local'), '', true);
+		wp_register_script( 'astral-ko-app', get_stylesheet_directory_uri() . '/app/app.min.js?v=1.0', array('knockout', 'jquery_local'), '', true);
 
     // comment reply script for threaded comments
     if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
