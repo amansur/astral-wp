@@ -71,19 +71,10 @@ $(function () {
 	
 	router.configure();
 	router.init();
+	// get route from url (for deep links) or default to home route
 	var hash = window.location.hash;
 	var base = window.location.href.split('#')[0];
-	router.setRoute(hash.substr(1));
-	//if (hash !== '')
-		//window.location.href = base + hash;
-	//router.setRoute('home');
-	
-	//if (hash === '') {
-	//	router.setRoute('home');
-	//	console.log('routing home');
-	//} else {
-	//	router.setRoute(hash.substr(1));
-	//	console.log('routing to', hash.substr(1));
-	//}
+	var route = hash.substr(1) === '/' || hash.substr(1) === '' ? 'home' : hash.substr(1);
+	router.setRoute(route);
 });
 
