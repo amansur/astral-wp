@@ -15,7 +15,7 @@ function ProjectListViewModel(parent) {
 		self.projects(jQuery.map(data, function (item, i) {
 			var _tags = jQuery.map(item.tags, function (_tag) {
 				return parent.tagListVM.tagLookup[_tag.id];
-			})
+			});
 			_projectLookup.push(item.slug);
 			return new Project(item.id, item.slug, item.name, null, _tags, item.featureImage[0], null);
 		}));
@@ -35,18 +35,19 @@ function ProjectListViewModel(parent) {
 			self.selectedTagsSummary("");
 		} else {
 			self.projectLookup([]);
+			var _projectLookup = [];
 			var filteredProjects = ko.utils.arrayFilter(self.projects(), function (project) {
 				var show = false;
-				var _projectLookup = [];
 				project.tags.forEach(function (projectTag) {
 					if (parent.tagListVM.selectedTags().indexOf(projectTag) !== -1) {
 						_projectLookup.push(project.slug);
 						show = true;
 					}
 				});
-				self.projectLookup(_projectLookup);
+				
 				return show;
 			});
+			self.projectLookup(_projectLookup);
 			self.selectedProjects(SplitArrayIntoN(filteredProjects, columnCount));
 			self.selectedTagsSummary(self.updateSelectedTagsSummary());
 		}
