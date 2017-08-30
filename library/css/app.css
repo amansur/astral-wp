@@ -36,10 +36,10 @@ body {
   }
 }
 
-#about a, #about a:hover, #about a:focus, #about a:visited:hover, #about a:visited:focus, #about a:visited, .projectDescription a, .projectDescription a:hover, .projectDescription a:focus, .projectDescription a:visited:hover, .projectDescription a:visited:focus, .projectDescription a:visited {
+#home a, #home a:hover, #home a:focus, #home a:visited:hover, #home a:visited:focus, #home a:visited, #about a, #about a:hover, #about a:focus, #about a:visited:hover, #about a:visited:focus, #about a:visited, .projectDescription a, .projectDescription a:hover, .projectDescription a:focus, .projectDescription a:visited:hover, .projectDescription a:visited:focus, .projectDescription a:visited {
   color: #f01d4f;
 }
-#about a:hover, .projectDescription a:hover {
+#home a:hover, #about a:hover, .projectDescription a:hover {
   text-decoration: underline;
 }
 
