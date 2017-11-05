@@ -263,7 +263,7 @@ body {
   text-transform: capitalize;
 }
 #work .projects .project .projectTags .projectTag {
-  display: inline-block;
+  display: inline;
   font-family: "Courier";
 }
 #work .projects .project .projectTags .projectTag ~ .projectTag:before {
@@ -341,7 +341,7 @@ body {
   text-transform: capitalize;
 }
 #project .project .projectInvolvement .projectTags .projectTag {
-  display: inline-block;
+  display: inline;
   font-family: "Courier";
 }
 #project .project .projectInvolvement .projectTags .projectTag ~ .projectTag:before {

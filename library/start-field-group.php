@@ -105,6 +105,24 @@ acf_add_local_field_group(array (
 				),
 			),
 		),
+		array(
+			'key' => 'field_570d6612eaa75',
+			'label' => 'Instagram Feed',
+			'name' => 'instagram',
+			'type' => 'wysiwyg',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'tabs' => 'all',
+			'toolbar' => 'full',
+			'media_upload' => 0,
+		),
 	),
 	'location' => array (
 		array (

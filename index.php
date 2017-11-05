@@ -92,7 +92,10 @@ $frontPageContent = get_fields(174);
 								?>
 							
 							</div>
-						</div> 	
+						</div> 
+						<div id="instagram">
+							<?php echo $frontPageContent["instagram"]?>
+						</div>	
 					</section>							<!-- END #about -->
 				
 					<section id="project" data-bind="with: projectVM">
