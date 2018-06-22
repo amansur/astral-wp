@@ -356,6 +356,9 @@ body {
 #project .media li {
   margin: 15px auto;
 }
+#project .media .mediaPicture {
+  font-family: "Courier";
+}
 #project .media .mediaPicture img {
   width: 100%;
 }
