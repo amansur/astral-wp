@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ERROR);
+
 class AstralController extends WP_REST_Controller {
 
     /**
