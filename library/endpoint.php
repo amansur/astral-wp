@@ -333,7 +333,11 @@ class AstralController extends WP_REST_Controller {
 					$media = array();
 		            $media["type"] = $mediaItem["acf_fc_layout"];
 		            if($mediaItem["acf_fc_layout"] == "picture") {
-		                $media["content"] = wp_get_attachment_image_src($mediaItem["image"], "full")[0];
+						$imgSrc = wp_get_attachment_image_src($mediaItem["image"], "full");
+						if(count($imgSrc) > 0) {
+							$media["content"] = $imgSrc[0];
+						}
+		                
 						$media["description"] = $mediaItem["image_description"];
 						$media["halfWidth"] = $mediaItem["half-width"];
 		            }
