@@ -375,9 +375,10 @@ class AstralController extends WP_REST_Controller {
     }
 }
 
-add_action('rest_api_init', function() {
+function astralRestApiInit() {
 	$controller = new AstralController('project');
 	$controller->register_routes();
-});
+}
+add_action('rest_api_init', 'astralRestApiInit');
 
 ?>
